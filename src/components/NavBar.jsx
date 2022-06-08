@@ -37,10 +37,10 @@ function NavBar() {
 							className="d-flex align-items-center"
 						>
 							<NavDropdown.Item href="#action/3.1">
-								Sign in
+								Log in
 							</NavDropdown.Item>
 							<NavDropdown.Item href="#action/3.2">
-								Sign out
+								Sign up
 							</NavDropdown.Item>
 						</NavDropdown>
 					</Nav>
