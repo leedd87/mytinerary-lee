@@ -1,6 +1,6 @@
 import React from "react";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/navbar.css";
 import { Link as LinkRouter } from "react-router-dom";
 

@@ -1,5 +1,4 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/calltoaction.css";
 import { Link as LinkRouter } from "react-router-dom";
 
