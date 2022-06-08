@@ -11,7 +11,7 @@ function CarouselBootstrap() {
 				Popular MyTineraries
 			</h2>
 
-			<Carousel className="container p-5 ">
+			<Carousel className="container-fluid p-5 ">
 				{data.map((city) => {
 					return (
 						<Carousel.Item key={city.id}>
