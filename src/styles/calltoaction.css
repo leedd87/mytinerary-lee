@@ -1,13 +1,11 @@
 .calltoaction-container {
-
    background-color: #F05454;
-   min-height: 20vh
+   min-height: 30vh
 }
 
 .calltoaction-img {
-   width: 50%;
+   width: 90%;
    object-fit: contain;
-
 }
 
 .text-call {
@@ -57,6 +55,10 @@
 }
 
 @media (max-width: 830px) {
+   .calltoaction-container {
+      min-height: 20vh;
+   }
+
    .calltoaction-img {
       width: 8.25rem;
    }

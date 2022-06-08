@@ -2,10 +2,10 @@ import "./styles/App.css";
 /*PAGES */
 import Index from "./pages/Index";
 import Cities from "./pages/Cities";
+import Error from "./pages/Error";
 /*COMPONENTS */
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import Error from "./components/Error";
 import { Route, Routes } from "react-router-dom";
 
 function App() {

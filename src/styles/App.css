@@ -6,17 +6,34 @@
 
 }
 
+/*ERROR*/
 .error-container {
   min-height: 80vh;
+}
+
+.error-container>h1 {
+  background-color: #F5F5F5;
 }
 
 .cities-container {
   min-height: 80vh;
 }
 
+.cities-container>h1 {
+  background-color: #F5F5F5;
+}
+
 .linkRouter {
   text-decoration: none;
   color: #121212;
+}
+
+.linkRouter:hover {
+  color: #F05454;
+}
+
+.link-error-container {
+  background-color: #F5F5F5;
 }
 
 .logo-text {
@@ -25,6 +42,7 @@
 
 /*scroll*/
 /* width */
+/*pseudo-element affects scrollstyle*/
 ::-webkit-scrollbar {
   width: 10px;
 }
