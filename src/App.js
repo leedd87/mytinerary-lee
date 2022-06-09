@@ -14,6 +14,7 @@ function App() {
 			<NavBar />
 			<Routes>
 				<Route path="/" element={<Index />} />
+
 				<Route path="/cities" element={<Cities />} />
 				<Route path="/*" element={<Error />} />
 			</Routes>
