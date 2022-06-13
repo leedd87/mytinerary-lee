@@ -19,8 +19,12 @@
   min-height: 80vh;
 }
 
-.cities-container>h1 {
+/* .cities-container>h1 {
   background-color: #F5F5F5;
+} */
+
+.detail-container {
+  min-height: 80vh;
 }
 
 .linkRouter {
@@ -30,6 +34,13 @@
 
 .linkRouter:hover {
   color: #F05454;
+}
+
+.link-card-cities {
+  background-color: #30475E;
+  color: #F5F5F5;
+  width: 50%;
+  text-align: center;
 }
 
 .link-error-container {
