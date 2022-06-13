@@ -3,6 +3,7 @@ import "./styles/App.css";
 import Index from "./pages/Index";
 import Cities from "./pages/Cities";
 import Error from "./pages/Error";
+import Detail from "./pages/Detail";
 /*COMPONENTS */
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -16,6 +17,7 @@ function App() {
 				<Route path="/" element={<Index />} />
 				<Route path="/cities" element={<Cities />} />
 				<Route path="/*" element={<Error />} />
+				<Route path={`/city/:id`} element={<Detail />} />
 			</Routes>
 			<Footer />
 		</div>
