@@ -5,6 +5,7 @@ import { useState } from "react";
 import dataObjeto from "../assets/data";
 import NotFound from "../components/NotFound";
 import "../styles/cities.css";
+import HeroCities from "../components/HeroCities";
 
 function Cities() {
 	const [searchInput, setSearchInput] = useState("");
@@ -26,21 +27,24 @@ function Cities() {
 	);
 
 	return (
-		<div className="d-flex flex-column justify-content-center align-items-center my-5 py-4 rounded cities-container container">
-			<input
-				type="text"
-				placeholder="Find city"
-				className="w-25 rounded"
-				onKeyUp={handleChange}
-			></input>
-			<div className="d-flex justify-content-center container flex-wrap">
-				{filter.length > 0 ? (
-					<PrintCardCities filterArray={filter} />
-				) : (
-					<NotFound />
-				)}
+		<>
+			<HeroCities />
+			<div className="d-flex flex-column justify-content-center align-items-center my-5 py-4 rounded cities-container container">
+				<input
+					type="text"
+					placeholder="Find a city"
+					className="w-25 rounded"
+					onKeyUp={handleChange}
+				></input>
+				<div className="d-flex justify-content-center container flex-wrap">
+					{filter.length > 0 ? (
+						<PrintCardCities filterArray={filter} />
+					) : (
+						<NotFound />
+					)}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 

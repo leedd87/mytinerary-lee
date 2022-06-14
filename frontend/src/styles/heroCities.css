@@ -1,0 +1,33 @@
+.hero-cities {
+   background-image: url("https://static.tripzilla.com/thumb/2/2/183586_1200x628.jpg");
+   background-repeat: no-repeat;
+   background-position: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   /*PARALLAX*/
+   min-height: 40rem;
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+
+}
+
+.hero-text-cities {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background-color: white;
+   opacity: 0.9;
+
+}
+
+@media (max-width: 425px) {
+   .hero-cities {
+      background-position: center;
+
+   }
+}
