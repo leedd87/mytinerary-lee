@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
 import data from "../assets/data";
 import CardDetail from "../components/CardDetail";
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
 // function Detail() {
 // 	const { id } = useParams();
@@ -27,7 +25,6 @@ import { useEffect } from "react";
 // export default Detail;
 
 function Detail() {
-	const { pathname } = useLocation();
 	const { id } = useParams();
 
 	const dataArray = [];
@@ -37,10 +34,6 @@ function Detail() {
 			return dataArray.push(element);
 		});
 	});
-
-	useEffect(() => {
-		console.log("se disparo el useEffect");
-	}, [pathname]);
 
 	let cityDetail = dataArray.filter((element) => element.id === Number(id));
 
