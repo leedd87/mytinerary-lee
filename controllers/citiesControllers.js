@@ -1,6 +1,6 @@
 const Cities = require("../models/city");
 
-const citiesControllores = {
+const citiesControllers = {
 	getCities: async (req, res) => {
 		let cities;
 		let error = null;
@@ -90,4 +90,4 @@ const citiesControllores = {
 	},
 };
 
-module.exports = citiesControllores;
+module.exports = citiesControllers;

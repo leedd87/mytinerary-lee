@@ -14,6 +14,10 @@ app.use(cors()); //=> app.use es un middleware y va en primer lugar antes de las
 app.use(express.json());
 app.use("/api", Router);
 
+app.get("/", (req, res) => {
+	res.send("SERVIDOR CREADOR");
+});
+
 app.listen(PORT, () => {
 	console.log("SERVIDOR CORRIENDO DESDE:" + PORT);
 });
