@@ -1,11 +1,11 @@
-const Cities = require("../models/city");
+const City = require("../models/city");
 
 const citiesControllers = {
 	getCities: async (req, res) => {
 		let cities;
 		let error = null;
 		try {
-			cities = await Cities.find();
+			cities = await City.find();
 		} catch (err) {
 			error = err;
 		}
@@ -21,7 +21,7 @@ const citiesControllers = {
 		let city;
 		let error = null;
 		try {
-			city = await Cities.findOne({ _id: id });
+			city = await City.findOne({ _id: id });
 		} catch (err) {
 			error = err;
 			console.log(error);
@@ -38,7 +38,9 @@ const citiesControllers = {
 		let city;
 		let error = null;
 		try {
-			city = await new Cities({
+			//el metodo va a intentar crear la ciudad si no puede va a tirar el catch(error) y me lo muestre para poder repararlo
+			city = await new City({
+				//nuevo modelo
 				name: name,
 				country: country,
 				image: image,
@@ -60,7 +62,7 @@ const citiesControllers = {
 		let citydb;
 		let error = null;
 		try {
-			citydb = await Cities.findOneAndUpdate({ _id: id }, city, {
+			citydb = await City.findOneAndUpdate({ _id: id }, city, {
 				new: true,
 			});
 		} catch (err) {
@@ -78,7 +80,7 @@ const citiesControllers = {
 		let city;
 		let error = null;
 		try {
-			city = await Cities.findByIdAndDelete({ _id: id });
+			city = await City.findByIdAndDelete({ _id: id });
 		} catch (err) {
 			error = err;
 		}

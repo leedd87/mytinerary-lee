@@ -29,6 +29,15 @@ function Cities() {
 		});
 	}, [search]);
 
+	// 	useEffect(()=> {
+	// 		axios.get('http://localhost:4000/api/cities').then (res=> {
+
+	// 		let filterInput = Cities.filter((city) => city.name.toLowerCase().startsWith(inputValue.toLowerCase().trim()));
+
+	// 		setCities(filterInput)
+	// 	});
+	//   }, [inputValue])
+
 	return (
 		<>
 			<HeroCities />
