@@ -8,6 +8,9 @@ import Detail from "./pages/Detail";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
+import ScrollToTop from "react-scroll-to-top";
+
+import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
 
 function App() {
 	return (
@@ -19,6 +22,15 @@ function App() {
 				<Route path="/*" element={<Error />} />
 				<Route path={`/city/:id`} element={<Detail />} />
 			</Routes>
+			<ScrollToTop
+				smooth
+				style={{
+					right: "20px",
+					bottom: "125px",
+					backgroundColor: "#f5f5f5",
+				}}
+				component={<ArrowCircleUpOutlinedIcon />}
+			/>
 			<Footer />
 		</div>
 	);
