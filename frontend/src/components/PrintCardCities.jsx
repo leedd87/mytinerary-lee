@@ -7,12 +7,12 @@ function PrintCardCities({ filterArray }) {
 			{filterArray.map((element) => (
 				<div
 					className="d-flex justify-content-center align-items-center flex-wrap"
-					key={element.id}
+					key={element._id}
 				>
 					<CardCities
-						city={element.city}
+						city={element.name}
 						image={element.image}
-						id={element.id}
+						id={element._id}
 					/>
 				</div>
 			))}

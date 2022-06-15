@@ -1,30 +1,33 @@
 import React from "react";
 import PrintCardCities from "../components/PrintCardCities";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import dataObjeto from "../assets/data";
 import NotFound from "../components/NotFound";
 import "../styles/cities.css";
 import HeroCities from "../components/HeroCities";
+import axios from "axios";
 
 function Cities() {
-	const [searchInput, setSearchInput] = useState("");
+	const [cities, setCities] = useState([]);
+	const [search, setSearch] = useState("");
 
 	const handleChange = (e) => {
-		setSearchInput(e.target.value);
+		setSearch(e.target.value);
+		console.log(e.target.value);
 	};
 
-	const dataArray = [];
+	useEffect(() => {
+		axios.get("http://localhost:4000/api/cities").then((res) => {
+			// setCities(res);
+			// console.log(res);
 
-	dataObjeto.map((ciudad) => {
-		return ciudad.cities.map((element) => {
-			return dataArray.push(element);
+			let city = res.data.response.cities.filter((elemento) =>
+				elemento.name.toLowerCase().startsWith(search.toLowerCase())
+			);
+			setCities(city);
+			console.log(city);
 		});
-	});
-
-	const filter = dataArray.filter((elemento) =>
-		elemento.city.toLowerCase().startsWith(searchInput.toLowerCase())
-	);
+	}, [search]);
 
 	return (
 		<>
@@ -37,8 +40,8 @@ function Cities() {
 					onKeyUp={handleChange}
 				></input>
 				<div className="d-flex justify-content-center container flex-wrap">
-					{filter.length > 0 ? (
-						<PrintCardCities filterArray={filter} />
+					{cities.length > 0 ? (
+						<PrintCardCities filterArray={cities} />
 					) : (
 						<NotFound />
 					)}
