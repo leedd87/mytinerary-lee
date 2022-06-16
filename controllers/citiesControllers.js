@@ -38,9 +38,7 @@ const citiesControllers = {
 		let city;
 		let error = null;
 		try {
-			//el metodo va a intentar crear la ciudad si no puede va a tirar el catch(error) y me lo muestre para poder repararlo
 			city = await new City({
-				//nuevo modelo
 				name: name,
 				country: country,
 				image: image,
