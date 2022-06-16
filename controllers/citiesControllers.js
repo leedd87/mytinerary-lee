@@ -58,7 +58,7 @@ const citiesControllers = {
 
 	modifyCity: async (req, res) => {
 		const id = req.params.id;
-		const city = req.body.data; //=>
+		const city = req.body.data;
 		let citydb;
 		let error = null;
 		try {
