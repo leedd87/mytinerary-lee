@@ -1,3 +1,36 @@
 .card-detail {
    background-color: #F05454;
 }
+
+.detail-text-container {
+   background-color: #F5F5F5;
+}
+
+
+.btn-detail {
+   padding: 0.8em 1.8em;
+   border: 3px solid #F05454;
+   position: relative;
+   overflow: hidden;
+   background-color: transparent;
+   text-align: center;
+   text-transform: uppercase;
+   font-size: 1rem;
+   transition: .3s;
+   z-index: 1;
+   font-family: inherit;
+   color: #F05454;
+   /*grow effect*/
+   transition: all .2s ease-in-out;
+
+}
+
+.btn-detail:hover::before {
+   width: 105%;
+}
+
+.btn-detail:hover {
+   color: #121212;
+   /*grow effect*/
+   transform: scale(1.1);
+}
