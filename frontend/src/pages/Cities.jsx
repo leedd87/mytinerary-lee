@@ -13,7 +13,6 @@ function Cities() {
 
 	const handleChange = (e) => {
 		setSearch(e.target.value);
-		console.log(e.target.value);
 	};
 
 	useEffect(() => {
@@ -22,21 +21,14 @@ function Cities() {
 			// console.log(res);
 
 			let city = res.data.response.cities.filter((elemento) =>
-				elemento.name.toLowerCase().startsWith(search.toLowerCase())
+				elemento.name
+					.toLowerCase()
+					.trim()
+					.startsWith(search.toLowerCase().trim())
 			);
 			setCities(city);
-			console.log(city);
 		});
 	}, [search]);
-
-	// 	useEffect(()=> {
-	// 		axios.get('http://localhost:4000/api/cities').then (res=> {
-
-	// 		let filterInput = Cities.filter((city) => city.name.toLowerCase().startsWith(inputValue.toLowerCase().trim()));
-
-	// 		setCities(filterInput)
-	// 	});
-	//   }, [inputValue])
 
 	return (
 		<>
