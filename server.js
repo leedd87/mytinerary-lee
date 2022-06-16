@@ -10,7 +10,7 @@ const app = express();
 app.set("port", PORT); //no es obligatorio pero buena practica
 
 //middlewares
-app.use(cors()); //=> app.use es un middleware y va en primer lugar antes de las rutas
+app.use(cors());
 app.use(express.json());
 app.use("/api", Router);
 
