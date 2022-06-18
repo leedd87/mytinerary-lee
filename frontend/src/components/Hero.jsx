@@ -8,8 +8,8 @@ function Hero() {
 			<div className="hero-text p-3 rounded">
 				<h1 className="">MyTinerary</h1>
 				<h2>
-					"Find your perfect trip, designed by insiders who know and love
-					their cities!"
+					Find your perfect trip, designed by insiders who know and love
+					their cities!
 				</h2>
 			</div>
 		</div>

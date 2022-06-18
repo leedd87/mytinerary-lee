@@ -6,7 +6,7 @@ function HeroCities() {
 		<div className="hero-cities">
 			<div className="hero-text-cities p-3 rounded">
 				<h1 className="">Cities</h1>
-				<h2>"Discover new cities!"</h2>
+				<h2>Discover new cities!</h2>
 			</div>
 		</div>
 	);

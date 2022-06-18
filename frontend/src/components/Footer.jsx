@@ -26,14 +26,14 @@ function Footer() {
 			<div className="redes-container mx-5">
 				<a href="https://www.instagram.com" className="mx-md-2">
 					<img
-						src={process.env.PUBLIC_URL + "./img/instagram.png"}
+						src={process.env.PUBLIC_URL + "/img/instagram.png"}
 						alt="instagram"
 						className="footer-img"
 					/>
 				</a>
 				<a href="https://www.facebook.com" className="mx-md-2">
 					<img
-						src={process.env.PUBLIC_URL + "./img/facebook.png"}
+						src={process.env.PUBLIC_URL + "/img/facebook.png"}
 						alt="facebook"
 						className="footer-img"
 					/>
