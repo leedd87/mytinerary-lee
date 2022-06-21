@@ -38,7 +38,7 @@ function Cities() {
 			></input>
 			<div className="d-flex flex-column justify-content-center align-items-center my-5 py-4 rounded cities-container container">
 				<div className="d-flex justify-content-center container flex-wrap">
-					{city.length > 0 ? (
+					{city?.length > 0 ? (
 						<PrintCardCities filterArray={city} />
 					) : (
 						<NotFound />
