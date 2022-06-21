@@ -1,0 +1,10 @@
+.avatar-itinerary {
+   width: 8rem;
+   height: 8rem;
+   border-radius: 100%;
+   border: 2px solid #F05454;
+   object-fit: cover;
+   /* vertical-align: middle; */
+
+
+}
