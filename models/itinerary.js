@@ -8,7 +8,6 @@ const itineraryScheme = new mongoose.Schema({
 	duration: { type: String, required: true },
 	hashtags: [{ type: String, required: true }],
 	likes: { type: String, required: true },
-	activities: [{ type: String, required: true }],
 });
 
 const Itinerary = mongoose.model("itineraries", itineraryScheme);
