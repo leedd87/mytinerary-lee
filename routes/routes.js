@@ -12,12 +12,15 @@ const {
 	addItinerary,
 	modifyItinerary,
 	removeItinerary,
+	findItineraryFromCity,
 } = itinerariesControllers;
 
 Router.route("/cities").get(getCities).post(addCity);
 
 Router.route("/cities/:id").delete(removeCity).put(modifyCity).get(getOneCity);
 
-Router.route("/itineraries").get(getItineraries);
+Router.route("/itineraries").get(getItineraries).post(addItinerary);
+
+Router.route("/itineraries/cities/:id").get(findItineraryFromCity);
 
 module.exports = Router;

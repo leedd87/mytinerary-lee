@@ -5,7 +5,7 @@ const itinerariesControllers = {
 		let itineraries;
 		let error = null;
 		try {
-			itineraries = await Itinerary.find();
+			itineraries = await Itinerary.find().populate("city", { name: 1 });
 		} catch (err) {
 			error = err;
 			console.log("PASO ALGO");
@@ -35,28 +35,28 @@ const itinerariesControllers = {
 
 	addItinerary: async (req, res) => {
 		const {
-			itineraryCity,
+			itineraryName,
 			name,
 			image,
 			price,
 			duration,
 			hashtags,
 			likes,
-			activities,
-		} = req.body.itinerary;
+			city,
+		} = req.body.data;
 		let itinerary;
 		let error = null;
 		try {
 			itinerary = await new Itinerary({
-				itineraryCity: itineraryCity,
+				itineraryName: itineraryName,
 				name: name,
 				image: image,
 				price: price,
 				duration: duration,
 				hashtags: hashtags,
 				likes: likes,
-				activities: activities,
-			});
+				city: city,
+			}).save();
 		} catch (err) {
 			error = err;
 		}
@@ -94,11 +94,27 @@ const itinerariesControllers = {
 		let error = null;
 		try {
 			itinerary = await Itinerary.findByIdAndDelete({ _id: id });
-		} catch {
+		} catch (err) {
 			error = err;
 		}
 		res.json({
 			response: error ? "ERROR" : itinerary,
+			success: error ? false : true,
+			error: error,
+		});
+	},
+
+	findItineraryFromCity: async (req, res) => {
+		let cityId = req.params.id;
+		let itineraries;
+		let error = null;
+		try {
+			itineraries = await Itinerary.find({ city: cityId }).populate("city");
+		} catch (err) {
+			error = err;
+		}
+		res.json({
+			response: error ? "ERROR" : itineraries,
 			success: error ? false : true,
 			error: error,
 		});
