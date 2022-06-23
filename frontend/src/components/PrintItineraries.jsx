@@ -1,16 +1,35 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/itineraries.css";
 import Activities from "./Activities";
 import "../styles/printItineraries.css";
 
+import { useDispatch, useSelector } from "react-redux";
+import itinerariesActions from "../redux/actions/itinerariesActions";
+import { useParams } from "react-router-dom";
+
 const PrintItineraries = ({ image, name }) => {
 	const [showActivities, setShowActivities] = useState(false);
+
+	const { id } = useParams();
 
 	const handleClick = () => {
 		setShowActivities(!showActivities);
 		console.log(showActivities);
 	};
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(itinerariesActions.findItineraryFromCity(id)); //aca le tengo que pasar la accion
+		//eslint-disable-next-line
+	}, []);
+
+	const itineraries = useSelector(
+		(store) => store.itinerariesReducer.itineraries
+	);
+
+	console.log(itineraries);
 
 	return (
 		<>

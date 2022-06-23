@@ -1,20 +1,24 @@
-import axios from "axios";
 import React, { useEffect } from "react";
-import { useState } from "react";
+
 import { useParams } from "react-router-dom";
 import PrintItineraries from "../components/PrintItineraries";
 
+import { useDispatch, useSelector } from "react-redux";
+import citiesActions from "../redux/actions/citiesActions";
+
 const Itineraries = () => {
 	const { id } = useParams();
-	const [city, setCity] = useState();
+
 	console.log(id);
 
-	useEffect(() => {
-		axios
-			.get(`http://localhost:4000/api/cities/${id}`)
-			.then((res) => setCity(res.data.response));
-	}, [id]);
+	const dispatch = useDispatch();
 
+	useEffect(() => {
+		dispatch(citiesActions.getOneCity(id));
+		//eslint-disable-next-line
+	}, []);
+
+	const city = useSelector((store) => store.citiesReducer.city);
 	console.log(city);
 
 	return (

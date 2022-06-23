@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "../styles/cities.css";
 import { useEffect } from "react";
-import axios from "axios";
 import CardCities from "../components/CardCities";
 
-function Cities() {
-	const [cities, setCities] = useState([]);
-	const [search, setSearch] = useState("");
+import citiesActions from "../redux/actions/citiesActions";
+import { useDispatch, useSelector } from "react-redux";
 
-	// console.log(dataArray);
+function Cities() {
+	const dispatch = useDispatch();
+
+	const [search, setSearch] = useState("");
 
 	const handleChange = (e) => {
 		setSearch(e.target.value);
@@ -16,14 +17,12 @@ function Cities() {
 	};
 
 	useEffect(() => {
-		axios.get("http://localhost:4000/api/cities").then((res) => {
-			setCities(res.data.response.cities);
-		});
-	}, []);
+		dispatch(citiesActions.filterCities(search));
+		//eslint-disable-next-line
+	}, [search]);
 
-	let city = cities?.filter((elemento) =>
-		elemento.name.toLowerCase().trim().startsWith(search.toLowerCase().trim())
-	);
+	const city = useSelector((store) => store.citiesReducer.filteredCities);
+	console.log(city);
 
 	return (
 		<div className="d-flex flex-column justify-content-center align-items-center">
