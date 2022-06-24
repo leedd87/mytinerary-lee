@@ -109,7 +109,9 @@ const itinerariesControllers = {
 		let itineraries;
 		let error = null;
 		try {
-			itineraries = await Itinerary.find({ city: cityId }).populate("city");
+			itineraries = await Itinerary.find({ city: cityId }).populate("city", {
+				name: 1,
+			});
 		} catch (err) {
 			error = err;
 		}

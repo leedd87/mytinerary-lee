@@ -67,3 +67,8 @@
 .form__field:invalid {
    box-shadow: none;
 }
+
+.cities-card-container {
+   min-width: 90%;
+
+}

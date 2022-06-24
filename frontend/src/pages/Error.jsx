@@ -8,7 +8,7 @@ function Error() {
 				to="/"
 				className="linkRouter link-error-container p-2 rounded"
 			>
-				<h1>ERROR 404</h1>
+				<h1>CITY NOT FOUND</h1>
 			</LinkRouter>
 		</div>
 	);

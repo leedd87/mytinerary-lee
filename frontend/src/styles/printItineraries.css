@@ -2,9 +2,45 @@
    width: 8rem;
    height: 8rem;
    border-radius: 100%;
-   border: 2px solid #F05454;
+   border: 3px solid #F05454;
    object-fit: cover;
    /* vertical-align: middle; */
+}
+
+.itinerary-title {
+   background-color: #F5F5F5;
+}
+
+.itinerary-container {
+   /* background-image: url("https://wallpaperaccess.com/full/2146330.jpg"); */
+   background-repeat: no-repeat;
+   background-position: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   /*PARALLAX*/
+   min-height: 30rem;
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+
+}
+
+.itinerary-text {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background-color: white;
+
+
+}
+
+.container-card-itinerary {
+
+   border: solid 5px #F05454;
 
 
 }

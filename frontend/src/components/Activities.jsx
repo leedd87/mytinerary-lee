@@ -4,7 +4,7 @@ import "../styles/activities.css";
 const Activities = () => {
 	return (
 		<>
-			<div className="d-flex justify-content-center align-items-center gap-3">
+			{/* <div className="d-flex justify-content-center align-items-center gap-3">
 				<div className="d-flex justify-content-center align-items-center flex-column">
 					<img
 						src="http://res.heraldm.com/content/image/2020/11/25/20201125000671_0.jpg"
@@ -29,7 +29,8 @@ const Activities = () => {
 					/>
 					<h6>Visit Leeum Art Museum</h6>
 				</div>
-			</div>
+			</div> */}
+			<h1 className="text-center">PAGE UNDER CONSTRUCTION</h1>
 		</>
 	);
 };

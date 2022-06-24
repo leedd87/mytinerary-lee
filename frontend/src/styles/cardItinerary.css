@@ -1,0 +1,41 @@
+.btn-itinerary {
+   padding: 0.8em 1.8em;
+   border: 3px solid #F05454;
+   position: relative;
+   overflow: hidden;
+   background-color: transparent;
+   text-align: center;
+   text-transform: uppercase;
+   font-size: 1rem;
+   transition: .3s;
+   z-index: 1;
+   font-family: inherit;
+   color: #F05454;
+   /*grow effect*/
+   transition: all .2s ease-in-out;
+
+}
+
+.btn-itinerary::before {
+   content: '';
+   width: 0;
+   height: 300%;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%) rotate(45deg);
+   background: #F05454;
+   transition: .5s ease;
+   display: block;
+   z-index: -1;
+}
+
+.btn-itinerary:hover::before {
+   width: 105%;
+}
+
+.btn-itinerary:hover {
+   color: #121212;
+   /*grow effect*/
+   transform: scale(1.1);
+}
