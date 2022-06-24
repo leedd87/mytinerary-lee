@@ -12,7 +12,7 @@ import ItineraryNotFound from "./ItineraryNotFound";
 const PrintItineraries = ({ image, name }) => {
 	const { id } = useParams();
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch(); //no podemos poner un hook dentro de otro hook
 
 	useEffect(() => {
 		dispatch(itinerariesActions.findItineraryFromCity(id)); //aca le tengo que pasar la accion
