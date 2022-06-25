@@ -13,7 +13,6 @@ function Cities() {
 
 	const handleChange = (e) => {
 		setSearch(e.target.value);
-		console.log(e.target.value);
 	};
 
 	useEffect(() => {
@@ -22,7 +21,6 @@ function Cities() {
 	}, [search]);
 
 	const city = useSelector((store) => store.citiesReducer.filteredCities);
-	console.log(city);
 
 	return (
 		<div className="d-flex flex-column justify-content-center align-items-center">

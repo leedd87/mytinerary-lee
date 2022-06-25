@@ -11,6 +11,8 @@ const CardItinerary = ({ element }) => {
 		console.log(showActivities);
 	};
 
+	let money = "💵 ";
+
 	return (
 		<>
 			<div className="w-100 d-flex justify-content-center align-items-center pt-3">
@@ -24,14 +26,8 @@ const CardItinerary = ({ element }) => {
 				/>
 				<h4>{element.name}</h4>
 			</div>
-			{/* <p className="text-center px-6">
-						A diverse and colorful neighborhood in Seoul, Itaewon is a
-						hotspot for foreigners and locals alike. The lively streets,
-						numerous cafes, restaurants, and shops fill the bustling
-						streets as nightlife is filled with vibrant energy.
-					</p> */}
 			<div className="d-flex justify-content-around">
-				<p className="p-3">Price: {element.price}</p>
+				<p className="p-3">Price: {money.repeat(element.price)}</p>
 				<p className="p-3">Duration: {element.duration}hs</p>
 			</div>
 			<div>

@@ -6,6 +6,7 @@ const citiesControllers = {
 		let error = null;
 		try {
 			cities = await City.find();
+			// .populate("itineraries");
 		} catch (err) {
 			error = err;
 		}

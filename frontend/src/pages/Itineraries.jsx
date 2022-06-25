@@ -22,7 +22,7 @@ const Itineraries = () => {
 	return (
 		//HERO COMPONENT
 		<div className="d-flex flex-column align-items-center itineraries-page-container">
-			<PrintItineraries name={city?.name} image={city?.image} />
+			<PrintItineraries name={city?.name} image={city?.image} id={id} />
 		</div>
 	);
 };
