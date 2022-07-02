@@ -15,22 +15,44 @@ import citiesActions from "./redux/actions/citiesActions";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
+import { ToastContainer } from "react-toastify";
+import usersActions from "./redux/actions/usersActions";
+
 function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(citiesActions.getCities());
+		if (localStorage.getItem("token") !== null) {
+			const token = localStorage.getItem("token");
+			dispatch(usersActions.verifyToken(token));
+		}
 		//eslint-disable-next-line
 	}, []);
 
 	return (
 		<div className="App">
 			<NavBar />
+			<ToastContainer
+				position="top-right"
+				autoClose={3000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 			<Routes>
 				<Route path="/" element={<Index />} />
 				<Route path="/cities" element={<Cities />} />
 				<Route path="/*" element={<Error />} />
 				<Route path={`/cities/:id`} element={<Itineraries />} />
+				<Route path="/users/signup" element={<SignUp />} />
+				<Route path="/users/signin" element={<SignIn />} />
 			</Routes>
 			<ScrollToTop
 				smooth
