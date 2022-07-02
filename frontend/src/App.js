@@ -15,10 +15,11 @@ import citiesActions from "./redux/actions/citiesActions";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-import SignUp from "./components/SignUp";
+// import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import { ToastContainer } from "react-toastify";
 import usersActions from "./redux/actions/usersActions";
+import SignUp from "./components/SignUp";
 
 function App() {
 	const dispatch = useDispatch();

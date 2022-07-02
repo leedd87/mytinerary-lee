@@ -29,3 +29,13 @@
 .signin:hover {
    color: #30475E;
 }
+
+
+.signup {
+   color: #30475E;
+   text-decoration: none;
+}
+
+.signup:hover {
+   color: #F05454;
+}

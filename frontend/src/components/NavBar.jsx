@@ -2,8 +2,17 @@ import React from "react";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 import "../styles/navbar.css";
 import { Link as LinkRouter } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import usersActions from "../redux/actions/usersActions";
 
 function NavBar() {
+	const dispatch = useDispatch();
+
+	const user = useSelector((store) => store.usersReducer.user);
+	console.log(user);
+	function handleClick() {
+		dispatch(usersActions.signOutUser());
+	}
 	return (
 		<Navbar expand="lg" className="contenedor-nav d-flex justify-content-end">
 			<Container>
@@ -26,21 +35,51 @@ function NavBar() {
 						</div>
 						<NavDropdown
 							title={
-								<img
-									src={process.env.PUBLIC_URL + "/img/acount_icon.png"}
-									alt="acount-icon"
-									className="drop-down-icon"
-								/>
+								!user ? (
+									<img
+										src={
+											process.env.PUBLIC_URL + "/img/acount_icon.png"
+										}
+										alt="acount-icon"
+										className="drop-down-icon"
+									/>
+								) : (
+									<img
+										src={user.userPhoto}
+										alt={user.userName}
+										className="drop-down-icon user-photo-nav-bar"
+									/>
+								)
 							}
 							id="basic-nav-dropdown"
 							className="d-flex align-items-center"
 						>
-							<NavDropdown.Item href="#action/3.1">
-								Log in
-							</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.2">
-								Sign up
-							</NavDropdown.Item>
+							{!user ? (
+								<>
+									<LinkRouter
+										to="/users/signin"
+										className="mx-2 signin"
+									>
+										Sign in
+									</LinkRouter>
+									<LinkRouter
+										to="/users/signup"
+										className="mx-2 signup"
+									>
+										Sign up
+									</LinkRouter>
+								</>
+							) : (
+								<>
+									<LinkRouter
+										to="/"
+										className="mx-2 signup"
+										onClick={handleClick}
+									>
+										Sign out
+									</LinkRouter>
+								</>
+							)}
 						</NavDropdown>
 					</Nav>
 				</Navbar.Collapse>

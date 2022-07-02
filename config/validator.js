@@ -3,7 +3,6 @@ const joi = require("joi"); //se instala en el backend
 const validator = (req, res, next) => {
 	const schema = joi.object({
 		email: joi.string().email({ minDomainSegments: 2 }).required().messages({
-			//primera parte del dominio @ segunda parte del dominio
 			"string.email": '"mail": incorrect format',
 		}),
 		password: joi
