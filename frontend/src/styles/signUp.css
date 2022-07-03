@@ -107,3 +107,8 @@
    background-color: #F05454 !important;
    border: solid 2px #30475E;
 }
+
+.sign-button:hover {
+   background-color: #30475E !important;
+   border: solid 2px #F05454;
+}
