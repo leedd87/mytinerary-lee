@@ -4,7 +4,6 @@ import "../styles/signUp.css";
 import { Form, Button } from "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-
 import usersActions from "../redux/actions/usersActions";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,9 +11,9 @@ import GoogleSignUp from "./GoogleSignUp";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const SignUp = ({ country }) => {
+const SignUp = () => {
 	const [countries, setCountries] = useState([]);
-	const [pais, setPais] = useState("");
+	const [country, setCountry] = useState("");
 
 	const dispatch = useDispatch();
 	useEffect(() => {
@@ -30,14 +29,14 @@ const SignUp = ({ country }) => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log(event);
+
 		const userData = {
 			userName: event.target[0].value,
 			userLastName: event.target[1].value,
 			email: event.target[2].value,
 			userPhoto: event.target[4].value,
-			country: event.target[5].value,
-			// country: country,
+			// country: event.target[5].value,
+			country: country,
 			password: event.target[3].value,
 			from: "form-signup",
 		};
@@ -62,87 +61,52 @@ const SignUp = ({ country }) => {
 	};
 
 	return (
-		<div className="signup-container d-flex justify-content-center align-items-center container my-5 rounded">
-			<div className="signup-form p-5 rounded">
-				<Form.Select
-					className="mb-3"
-					onChange={(e) => setPais(e.target.value)}
-				>
-					<option value="">Country</option>
-					{sortedCountries?.map((pais, index) => (
-						<option key={index} value={pais}>
-							{pais}
-						</option>
-					))}
-				</Form.Select>
-				{pais ? (
-					<Form onSubmit={handleSubmit}>
-						<Form.Group className="mb-3">
-							<Form.Control
-								required="name"
-								type="text"
-								placeholder="First Name"
-							/>
-						</Form.Group>
-						<Form.Group className="mb-3">
-							<Form.Control type="text" placeholder="Last Name" />
-						</Form.Group>
-						<Form.Group className="mb-3">
-							<Form.Control type="email" placeholder="Enter email" />
-						</Form.Group>
-						<Form.Group className="mb-3">
-							<Form.Control type="password" placeholder="Password" />
-						</Form.Group>
-						<Form.Group className="mb-3">
-							<Form.Control type="text" placeholder="Photo URL" />
-						</Form.Group>
-						{/* <Form.Select className="mb-3">
-						<option>Country</option>
+		<div className="container-signup">
+			<div className="signup-container container d-flex justify-content-center align-items-center container my-5 rounded">
+				<div className=" p-5 rounded  signup-form">
+					<Form.Select
+						className="mb-3 "
+						onChange={(e) => setCountry(e.target.value)}
+					>
+						<option value="">Country</option>
 						{sortedCountries?.map((pais, index) => (
 							<option key={index} value={pais}>
 								{pais}
 							</option>
 						))}
-					</Form.Select> */}
-						<Button variant="primary" type="submit">
-							Submit
-						</Button>
-						<GoogleSignUp pais={pais} />
-					</Form>
-				) : null}
-				{/* <Form onSubmit={handleSubmit}>
-					<Form.Group className="mb-3">
-						<Form.Control
-							required="name"
-							type="text"
-							placeholder="First Name"
-						/>
-					</Form.Group>
-					<Form.Group className="mb-3">
-						<Form.Control type="text" placeholder="Last Name" />
-					</Form.Group>
-					<Form.Group className="mb-3">
-						<Form.Control type="email" placeholder="Enter email" />
-					</Form.Group>
-					<Form.Group className="mb-3">
-						<Form.Control type="password" placeholder="Password" />
-					</Form.Group>
-					<Form.Group className="mb-3">
-						<Form.Control type="text" placeholder="Photo URL" />
-					</Form.Group> */}
-				{/* <Form.Select className="mb-3">
-						<option>Country</option>
-						{sortedCountries?.map((pais, index) => (
-							<option key={index} value={pais}>
-								{pais}
-							</option>
-						))}
-					</Form.Select> */}
-				{/* <Button variant="primary" type="submit">
-						Submit
-					</Button>
-					<GoogleSignUp />
-				</Form> */}
+					</Form.Select>
+					{country ? (
+						<Form onSubmit={handleSubmit}>
+							<Form.Group className="mb-3">
+								<Form.Control
+									required="name"
+									type="text"
+									placeholder="First Name"
+								/>
+							</Form.Group>
+							<Form.Group className="mb-3">
+								<Form.Control type="text" placeholder="Last Name" />
+							</Form.Group>
+							<Form.Group className="mb-3">
+								<Form.Control type="email" placeholder="Enter email" />
+							</Form.Group>
+							<Form.Group className="mb-3">
+								<Form.Control type="password" placeholder="Password" />
+							</Form.Group>
+							<Form.Group className="mb-3">
+								<Form.Control type="text" placeholder="Photo URL" />
+							</Form.Group>
+							<Button
+								variant="primary"
+								type="submit"
+								className="mb-3 sign-button"
+							>
+								Submit
+							</Button>
+							<GoogleSignUp pais={country} />
+						</Form>
+					) : null}
+				</div>
 			</div>
 		</div>
 	);

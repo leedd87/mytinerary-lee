@@ -120,6 +120,8 @@ const usersControllers = {
 			} else {
 				//pasa por aca si NO fue registrado por el formulario de la pagina
 				if (from !== "form-signin") {
+					//LINEA 163 ES FORMULARIO
+					//RED SOCIAL
 					//este es red sociales
 					let passwordMatch = userExist.password.filter((pass) =>
 						bcryptjs.compareSync(password, pass)
@@ -135,6 +137,7 @@ const usersControllers = {
 							from: from,
 						};
 						const token = jwt.sign(
+							//ESTE TOKEN PRIMERO ANTES QUE EL USEREXIST.SAVE()
 							//creacion de TOKEN
 							{ ...userData },
 							process.env.SECRET_KEY,
@@ -159,12 +162,15 @@ const usersControllers = {
 						});
 					}
 				} else {
-					//pasa por aca SI fue completado por el formulario de la pagina FORMULARIO
+					//pasa por aca SI EL USUARIO completo por el formulario de la pagina FORMULARIO
 					let passwordMatch = userExist.password.filter((pass) =>
 						bcryptjs.compareSync(password, pass)
 					);
 					console.log(passwordMatch.length);
-					if (passwordMatch.length > 0) {
+					if (
+						passwordMatch.length > 0 &&
+						userExist.verification === true
+					) {
 						const userData = {
 							id: userExist._id,
 							userName: userExist.userName,
@@ -184,6 +190,12 @@ const usersControllers = {
 							from: from,
 							response: { token, userData }, //revisar maniana antes token
 							message: "Welcome back " + userData.userName,
+						});
+					} else if (!userExist.verification) {
+						res.json({
+							success: false,
+							from: from,
+							message: "You need to verify your mail first.",
 						});
 					} else {
 						res.json({

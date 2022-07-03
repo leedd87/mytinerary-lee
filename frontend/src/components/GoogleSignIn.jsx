@@ -38,7 +38,6 @@ const GoogleSignUp = ({ country }) => {
 		google.accounts.id.initialize({
 			//inicializador
 			client_id: CLIENT_ID,
-			//"561756246857-vf9thunmmq3mpqoldqk8i9l8ottsmlfb.apps.googleusercontent.com",
 			callback: handleCallbackResponse, //una funcion para ver como se maneja la respuesta. nos va a mandar la info que recibamos de google a nuestro backend y a nuestra bd y asi poder autenticar al usuario
 		});
 
@@ -48,6 +47,7 @@ const GoogleSignUp = ({ country }) => {
 			locale: "en",
 			shape: "pill",
 			text: "signin_with",
+			// type: "icon",
 		});
 	});
 

@@ -4,24 +4,24 @@ const usersActions = {
 	signUpUser: (userData) => {
 		// console.log(userData);
 		return async (dispatch, getState) => {
-			// try {
-			const res = await axios.post(
-				"http://localhost:4000/api/users/signup",
-				{ userData }
-			);
-			console.log(res);
-			dispatch({
-				type: "SIGN_UP_MESSAGE", //cambio de nombre antes MESSAGE
-				payload: {
-					view: true,
-					message: res.data.message,
-					success: res.data.success,
-				},
-			});
-			return res; //probando
-			// } catch (error) {
-			// 	console.log(error);
-			// }
+			try {
+				const res = await axios.post(
+					"http://localhost:4000/api/users/signup",
+					{ userData }
+				);
+				console.log(res);
+				dispatch({
+					type: "SIGN_UP_MESSAGE", //cambio de nombre antes MESSAGE
+					payload: {
+						view: true,
+						message: res.data.message,
+						success: res.data.success,
+					},
+				});
+				return res; //probando
+			} catch (error) {
+				console.log(error);
+			}
 		};
 	},
 	signInUser: (logedUser) => {
@@ -61,11 +61,8 @@ const usersActions = {
 	},
 
 	signOutUser: () => {
-		//ex parametro closeUser
+		//parametro de deslogueo
 		return async (dispatch, getState) => {
-			// const res = axios.post("http://localhost:4000/api/users/signout", {
-			// 	closeUser,
-			// });
 			localStorage.removeItem("token");
 			dispatch({ type: "SIGN_OUT", payload: null });
 		};
@@ -86,6 +83,7 @@ const usersActions = {
 								view: true,
 								message: user.data.message,
 								success: user.data.success,
+								userData: user.data.response, //prueba
 							},
 						}); //revisar si anda mal
 					} else {

@@ -34,25 +34,31 @@ const SignIn = () => {
 	};
 
 	return (
-		<div className="signup-container d-flex justify-content-center align-items-center container my-5 rounded">
-			<div className="signup-form p-5 rounded">
-				<Form onSubmit={handleSubmit}>
-					<Form.Group className="mb-3">
-						<Form.Control
-							type="email"
-							placeholder="Email"
-							// className="form_signin"
-						/>
-					</Form.Group>
-					<Form.Group className="mb-3">
-						<Form.Control type="password" placeholder="Password" />
-					</Form.Group>
+		<div className="container-signin">
+			<div className="signup-container d-flex justify-content-center align-items-center container my-5 rounded">
+				<div className="signup-form p-5 rounded d-flex justify-content-center">
+					<Form onSubmit={handleSubmit} className="w-100">
+						<Form.Group className="mb-3">
+							<Form.Control
+								type="email"
+								placeholder="Email"
+								// className="form_signin"
+							/>
+						</Form.Group>
+						<Form.Group className="mb-3">
+							<Form.Control type="password" placeholder="Password" />
+						</Form.Group>
 
-					<Button variant="primary" type="submit">
-						Log in
-					</Button>
-					<GoogleSignIn />
-				</Form>
+						<Button
+							variant="primary"
+							type="submit"
+							className="mb-3 sign-button"
+						>
+							Log in
+						</Button>
+						<GoogleSignIn />
+					</Form>
+				</div>
 			</div>
 		</div>
 	);

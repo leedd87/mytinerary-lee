@@ -45,8 +45,8 @@ function NavBar() {
 									/>
 								) : (
 									<img
-										src={user.userPhoto}
-										alt={user.userName}
+										src={user.userData.userPhoto}
+										alt={user.userData.userName}
 										className="drop-down-icon user-photo-nav-bar"
 									/>
 								)
