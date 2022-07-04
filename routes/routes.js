@@ -34,7 +34,7 @@ Router.route("/itineraries/:id")
 
 Router.route("/itineraries/cities/:id").get(findItineraryFromCity);
 
-Router.route("/users/signup").post(validator, signUpUser);
+Router.route("/users/signup").post(validator, signUpUser); //ACA SE USA EL VALIDATOR PARA EL SIGNUP
 
 Router.route("/users/signin").post(signInUser);
 

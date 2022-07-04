@@ -12,7 +12,7 @@ import ScrollToTop from "react-scroll-to-top";
 import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
 
 import citiesActions from "./redux/actions/citiesActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 // import SignUp from "./components/SignUp";
@@ -33,6 +33,9 @@ function App() {
 		//eslint-disable-next-line
 	}, []);
 
+	const user = useSelector((store) => store.usersReducer.user);
+	console.log(user);
+
 	return (
 		<div className="App">
 			<NavBar />
@@ -52,8 +55,9 @@ function App() {
 				<Route path="/cities" element={<Cities />} />
 				<Route path="/*" element={<Error />} />
 				<Route path={`/cities/:id`} element={<Itineraries />} />
-				<Route path="/users/signup" element={<SignUp />} />
-				<Route path="/users/signin" element={<SignIn />} />
+
+				{!user && <Route path="/users/signup" element={<SignUp />} />}
+				{!user && <Route path="/users/signin" element={<SignIn />} />}
 			</Routes>
 			<ScrollToTop
 				smooth

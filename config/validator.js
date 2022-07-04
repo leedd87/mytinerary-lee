@@ -2,6 +2,7 @@ const joi = require("joi"); //se instala en el backend
 
 const validator = (req, res, next) => {
 	const schema = joi.object({
+		//creamos la estructura de nuestro validador con el metodo object()
 		email: joi.string().email({ minDomainSegments: 2 }).required().messages({
 			"string.email": "The mail has an incorrect format",
 		}),
@@ -30,6 +31,7 @@ const validator = (req, res, next) => {
 			"string.min": "There is something wrong with your photo URL",
 		}),
 	});
+
 	const validation = schema.validate(req.body.userData, { abortEarly: false });
 	if (validation.error) {
 		return res.json({

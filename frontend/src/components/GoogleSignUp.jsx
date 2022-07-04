@@ -36,15 +36,15 @@ const GoogleSignUp = ({ pais }) => {
 
 		if (res.data.from === "validator") {
 			messagePopUp.forEach((alert) => {
-				toast.error(alert.message);
+				toast.error(alert.message, { position: "bottom-left" });
 			});
 		}
 		if (res.data.from === "signup") {
 			if (res.data.success) {
 				navigate("/");
-				toast.success(res.data.message);
+				toast.success(res.data.message, { position: "top-center" });
 			} else {
-				toast.error(res.data.message);
+				toast.error(res.data.message, { position: "top-center" });
 			}
 		}
 	}

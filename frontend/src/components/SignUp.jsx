@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import GoogleSignUp from "./GoogleSignUp";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Link as LinkRouter } from "react-router-dom";
 
 const SignUp = () => {
 	const [countries, setCountries] = useState([]);
@@ -47,15 +48,15 @@ const SignUp = () => {
 
 		if (res.data.from === "validator") {
 			messagePopUp.forEach((alert) => {
-				toast.error(alert.message);
+				toast.error(alert.message, { position: "bottom-left" });
 			});
 		}
 		if (res.data.from === "signup") {
 			if (res.data.success) {
 				navigate("/");
-				toast.success(res.data.message);
+				toast.success(res.data.message, { position: "top-center" });
 			} else {
-				toast.error(res.data.message);
+				toast.error(res.data.message, { position: "top-center" });
 			}
 		}
 	};
@@ -104,6 +105,12 @@ const SignUp = () => {
 								Submit
 							</Button>
 							<GoogleSignUp pais={country} />
+							<div className="d-flex mt-3 align-items-center">
+								<h6 className="mb-0 me-1">Already a user?</h6>
+								<LinkRouter to="/users/signin" className="signup">
+									Sign in
+								</LinkRouter>
+							</div>
 						</Form>
 					) : null}
 				</div>

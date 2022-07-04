@@ -26,10 +26,10 @@ const SignIn = () => {
 
 		let messagePopUp = res.data.message;
 		if (res.data.success) {
-			toast.success(messagePopUp);
+			toast.success(messagePopUp, { position: "top-center" });
 			navigate("/");
 		} else {
-			toast.error(messagePopUp);
+			toast.error(messagePopUp, { position: "top-center" });
 		}
 	};
 

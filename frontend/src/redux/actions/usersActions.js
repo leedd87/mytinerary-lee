@@ -76,7 +76,7 @@ const usersActions = {
 				})
 				.then((user) => {
 					if (user.data.success) {
-						dispatch({ type: "SIGN_IN", payload: user.data.response }); //revisar si anda mal
+						// dispatch({ type: "SIGN_IN", payload: user.data.response }); //revisar si anda mal
 						dispatch({
 							type: "SIGN_IN",
 							payload: {

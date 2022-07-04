@@ -39,16 +39,18 @@ const usersControllers = {
 			const uniqueString = crypto.randomBytes(15).toString("hex"); //utilizo metodo crypto de bycrptjs
 
 			if (userExist) {
+				//SI EL USUARIO EXISTE
 				if (userExist.from.indexOf(from) !== -1) {
 					//si el usuario existe
+					//recorre el array del from y si encuentra coincidencia avisa que tiene que loguearse
 					res.json({
 						success: false,
-						from: "signup", //revisar probando con form-signup antes solo signup
+						from: "signup",
 						message: "You already sign up, please sign in",
 					});
 				} else {
-					//si el usuario NO existe
-					const hashPassword = bcryptjs.hashSync(password, 10);
+					//si el usuario no esta registrado con ese FROM, pero usuario existe pushea el nuevo from
+					//const hashPassword = bcryptjs.hashSync(password, 10);//deberia funcionar ya que es global
 					userExist.from.push(from);
 					userExist.password.push(hashPassword);
 					userExist.verification = true;
@@ -62,6 +64,7 @@ const usersControllers = {
 					});
 				}
 			} else {
+				//SI EL USUARIO NO EXISTE
 				//const hashPassword = bcryptjs.hashSync(password, 10);
 				const newUser = await new User({
 					userName,
@@ -113,16 +116,17 @@ const usersControllers = {
 			console.log(userExist);
 			// const indexPass = userExist.from.indexOf(from);
 			if (!userExist) {
+				//EL USUARIO NO EXISTE
 				res.json({
 					success: false,
 					message: "Your user has not been registered, please sign up",
 				});
 			} else {
-				//pasa por aca si NO fue registrado por el formulario de la pagina
+				//EL USUARIO SI EXISTE
 				if (from !== "form-signin") {
+					//USUARIO NO fue registrado por el formulario de la pagina Y REGISTRO POR RED SOCIAL
 					//LINEA 163 ES FORMULARIO
 					//RED SOCIAL
-					//este es red sociales
 					let passwordMatch = userExist.password.filter((pass) =>
 						bcryptjs.compareSync(password, pass)
 					);
@@ -137,7 +141,6 @@ const usersControllers = {
 							from: from,
 						};
 						const token = jwt.sign(
-							//ESTE TOKEN PRIMERO ANTES QUE EL USEREXIST.SAVE()
 							//creacion de TOKEN
 							{ ...userData },
 							process.env.SECRET_KEY,
@@ -162,12 +165,13 @@ const usersControllers = {
 						});
 					}
 				} else {
-					//pasa por aca SI EL USUARIO completo por el formulario de la pagina FORMULARIO
-					let passwordMatch = userExist.password.filter((pass) =>
-						bcryptjs.compareSync(password, pass)
+					//pasa por aca SI EL USUARIO SE REGISTRO por el formulario de la pagina FORMULARIO
+					let passwordMatch = userExist.password.filter(
+						(pass) => bcryptjs.compareSync(password, pass) //si devuelve un length mayor a 0 quiere decir que coinciden
 					);
 					console.log(passwordMatch.length);
 					if (
+						//SI SE REGISTRO Y SU MAIL ESTA VERIFICADO
 						passwordMatch.length > 0 &&
 						userExist.verification === true
 					) {
@@ -184,14 +188,15 @@ const usersControllers = {
 							process.env.SECRET_KEY,
 							{ expiresIn: 60 * 60 * 24 }
 						);
-						await userExist.save();
+						await userExist.save(); //DEVUELVE LA RESPUESTA
 						res.json({
 							success: true,
 							from: from,
-							response: { token, userData }, //revisar maniana antes token
+							response: { token, userData },
 							message: "Welcome back " + userData.userName,
 						});
 					} else if (!userExist.verification) {
+						//SI ESTA REGISTRADO Y NO VERIFICO SU MAIL
 						res.json({
 							success: false,
 							from: from,
@@ -226,7 +231,7 @@ const usersControllers = {
 		} else {
 			res.json({
 				success: false,
-				message: `email has not been confirmed yet!`, //cambiar mensaje
+				message: `Email has not been verify yet!`,
 			});
 		}
 	},
