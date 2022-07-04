@@ -32,7 +32,7 @@ const validator = (req, res, next) => {
 		}),
 	});
 
-	const validation = schema.validate(req.body.userData, { abortEarly: false });
+	const validation = schema.validate(req.body.userData, { abortEarly: false }); //valida la el cuerpo del userData y el abortEarly realiza todas las validaciones
 	if (validation.error) {
 		return res.json({
 			success: false,

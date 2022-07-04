@@ -26,7 +26,9 @@ function App() {
 
 	useEffect(() => {
 		dispatch(citiesActions.getCities());
+
 		if (localStorage.getItem("token") !== null) {
+			//concidicional para el token
 			const token = localStorage.getItem("token");
 			dispatch(usersActions.verifyToken(token));
 		}
