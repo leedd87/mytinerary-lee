@@ -316,8 +316,7 @@ const sendVerification = async (email, string) => {
 		
 		
 
-<a href=http://localhost:4000/api/verify/${string}>Click me</a>
-      <h3>to confirm!</h3>
+
       `,
 	};
 
