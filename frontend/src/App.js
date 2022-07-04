@@ -34,7 +34,6 @@ function App() {
 	}, []);
 
 	const user = useSelector((store) => store.usersReducer.user);
-	console.log(user);
 
 	return (
 		<div className="App">

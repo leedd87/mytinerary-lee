@@ -41,7 +41,7 @@ const GoogleSignUp = ({ pais }) => {
 		}
 		if (res.data.from === "signup") {
 			if (res.data.success) {
-				navigate("/");
+				navigate("/users/signin");
 				toast.success(res.data.message, { position: "top-center" });
 			} else {
 				toast.error(res.data.message, { position: "top-center" });

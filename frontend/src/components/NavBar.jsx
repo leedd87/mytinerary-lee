@@ -9,7 +9,7 @@ function NavBar() {
 	const dispatch = useDispatch();
 
 	const user = useSelector((store) => store.usersReducer.user);
-	console.log(user);
+
 	function handleClick() {
 		dispatch(usersActions.signOutUser());
 	}
