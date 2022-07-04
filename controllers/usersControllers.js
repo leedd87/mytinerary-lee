@@ -54,9 +54,8 @@ const usersControllers = {
 					userExist.from.push(from);
 					userExist.password.push(hashPassword);
 					userExist.verification = true;
-
 					await userExist.save();
-					console.log(from);
+
 					res.json({
 						success: true,
 						from: "signup",
