@@ -226,7 +226,7 @@ const usersControllers = {
 		if (user) {
 			user.verification = true;
 			await user.save();
-			res.redirect("http://localhost:3000/");
+			res.redirect("http://localhost:3000/users/signin");
 		} else {
 			res.json({
 				success: false,
