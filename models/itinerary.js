@@ -7,7 +7,8 @@ const itineraryScheme = new mongoose.Schema({
 	price: { type: Number, required: true },
 	duration: { type: Number, required: true },
 	hashtags: { type: Array, required: true },
-	likes: { type: Number, required: true },
+	likes: { type: Array, required: true }, //corroborar si es array
+	comments: { type: Array, required: true }, //corroborar si es array
 	city: { type: mongoose.Types.ObjectId, ref: "cities" },
 });
 

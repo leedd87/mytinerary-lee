@@ -8,7 +8,7 @@ const itinerariesControllers = {
 			itineraries = await Itinerary.find().populate("city", { name: 1 });
 		} catch (err) {
 			error = err;
-			console.log("PASO ALGO");
+			console.log("Something went wrong");
 		}
 		res.json({
 			response: error ? "ERROR" : { itineraries },
