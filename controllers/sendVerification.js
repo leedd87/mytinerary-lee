@@ -21,7 +21,8 @@ const sendVerification = async (email, string) => {
 
 		//secure: true,
 		auth: {
-			user: "leedav.dev2011@gmail.com",
+			user: process.env.USER_MAIL, //probar si anda
+			//"leedav.dev2011@gmail.com",
 			// pass: "nfbizmomkbggdbla",
 			type: "OAuth2",
 			clientId: process.env.GOOGLE_CLIENT_ID,

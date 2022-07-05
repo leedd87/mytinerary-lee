@@ -2,7 +2,7 @@ import "./styles/App.css";
 /*PAGES */
 import Index from "./pages/Index";
 import Cities from "./pages/Cities";
-import Error from "./pages/Error";
+// import Error from "./pages/Error";
 import Itineraries from "./pages/Itineraries";
 /*COMPONENTS */
 import NavBar from "./components/NavBar";
@@ -54,7 +54,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Index />} />
 				<Route path="/cities" element={<Cities />} />
-				<Route path="/*" element={<Error />} />
+				<Route path="/*" element={<Index />} />
 				<Route path={`/cities/:id`} element={<Itineraries />} />
 
 				{!user && <Route path="/users/signup" element={<SignUp />} />}

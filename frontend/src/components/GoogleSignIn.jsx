@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { CLIENT_ID } from "../consts/google";
 import { useNavigate } from "react-router-dom";
 
-const GoogleSignUp = ({ country }) => {
+const GoogleSignIn = ({ country }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -54,4 +54,4 @@ const GoogleSignUp = ({ country }) => {
 	return <div id="buttonDiv"></div>;
 };
 
-export default GoogleSignUp;
+export default GoogleSignIn;

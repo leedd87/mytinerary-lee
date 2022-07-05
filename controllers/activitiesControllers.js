@@ -81,7 +81,7 @@ const activitiesControllers = {
 		let activities;
 		let error = null;
 		try {
-			activities = await Activity.find({ activity: activityId }).populate(
+			activities = await Activity.find({ itinerary: activityId }).populate(
 				"itinerary",
 				{
 					itineraryName: 1,
