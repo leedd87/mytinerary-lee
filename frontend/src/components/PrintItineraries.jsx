@@ -22,7 +22,7 @@ const PrintItineraries = ({ image, name, id }) => {
 		(store) => store.itinerariesReducer.itineraries
 	);
 
-	console.log(itineraries);
+	// console.log(itineraries);
 
 	return (
 		<>
@@ -40,12 +40,12 @@ const PrintItineraries = ({ image, name, id }) => {
 			<h2 className="itinerary-title p-2 rounded mt-3">ITINERARIES</h2>
 
 			{itineraries.length > 0 ? (
-				itineraries.map((element) => (
+				itineraries.map((itinerary) => (
 					<div
 						className="d-flex flex-column justify-content-center align-items-center bg-white rounded w-100 container my-3 container-card-itinerary"
-						key={element._id}
+						key={itinerary._id}
 					>
-						<CardItinerary element={element} />
+						<CardItinerary itinerary={itinerary} />
 					</div>
 				))
 			) : (

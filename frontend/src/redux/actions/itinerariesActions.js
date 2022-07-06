@@ -6,7 +6,7 @@ const itinerariesActions = {
 			const res = await axios.get(
 				`http://localhost:4000/api/itineraries/cities/${id}`
 			);
-			console.log(res);
+			// console.log(res);
 			dispatch({
 				type: "FIND_ITINERARY_FROM_CITY",
 				payload: res.data.response,

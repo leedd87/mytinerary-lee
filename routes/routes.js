@@ -52,7 +52,7 @@ Router.route("/activities").get(getActivities).post(addActivity);
 
 Router.route("/activities/:id").put(modifyActivity).delete(removeActivity);
 
-Router.route("activities/itineraries/:id").get(findActivityFromItinerary);
+Router.route("/activities/itineraries/:id").get(findActivityFromItinerary);
 
 //LIKES-DISLIKES
 Router.route("/itineraries/likes/:id").put(

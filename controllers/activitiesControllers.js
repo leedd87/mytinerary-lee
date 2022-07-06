@@ -78,6 +78,7 @@ const activitiesControllers = {
 
 	findActivityFromItinerary: async (req, res) => {
 		let activityId = req.params.id;
+		// console.log(activityId);
 		let activities;
 		let error = null;
 		try {
