@@ -51,8 +51,6 @@ const GoogleSignUp = ({ pais }) => {
 
 	useEffect(() => {
 		/* global google */
-
-		//agregado para probar posibles errores
 		google.accounts.id.initialize({
 			//inicializador
 			client_id: CLIENT_ID,

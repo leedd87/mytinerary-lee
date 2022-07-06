@@ -1,15 +1,28 @@
 import React from "react";
 import Activities from "./Activities";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import "../styles/cardItinerary.css";
+import { useDispatch } from "react-redux";
+import itinerariesActions from "../redux/actions/itinerariesActions";
 
 const CardItinerary = ({ element }) => {
+	const dispatch = useDispatch();
+
 	const [showActivities, setShowActivities] = useState(false);
 	const handleClick = () => {
 		setShowActivities(!showActivities);
 		console.log(showActivities);
 	};
+
+	//definir si hay un usuario
+
+	async function likesDislikes() {
+		let res = await dispatch(
+			itinerariesActions.likeDislikeAction(element._id)
+		);
+		console.log(res);
+	}
 
 	let money = "💵 ";
 

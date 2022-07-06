@@ -21,7 +21,7 @@ const SignUp = () => {
 		axios
 			.get("https://restcountries.com/v3.1/all")
 			.then((res) => setCountries(res.data));
-		// 	//eslint-disable-next-line
+		//eslint-disable-next-line
 	}, []);
 
 	const sortedCountries = countries.map((res) => res.name.common).sort();

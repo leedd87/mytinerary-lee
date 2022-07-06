@@ -121,6 +121,38 @@ const itinerariesControllers = {
 			error: error,
 		});
 	},
+
+	itineraryLikeDislike: async (req, res) => {
+		const id = req.params.id; //id del itinerario
+		const user = req.user.id;
+
+		await Itinerary.findOne({ _id: id }) //va a encontrar el itinerario que coincida con el id de la ciudad? corroborar
+			.then((itinirary) => {
+				console.log(itinirary);
+				if (itinirary.likes.includes(user)) {
+					//este if saca el like
+					Itinerary.findOneAndUpdate(
+						{ _id: id },
+						{ $pull: { likes: user } }, //$pull/saca/elimina metodo de mongo para manejo de datos
+						{ new: true } //nueva respuesta
+					)
+						.then((newItinierary) =>
+							res.json({ success: true, response: newItinierary.likes })
+						)
+						.catch((error) => console.log(error));
+				} else {
+					Itinerary.findOneAndUpdate(
+						{ _id: id },
+						{ $push: { likes: user } }, //$push/agrega metodo de mongo para manejo de datos
+						{ new: true }
+					)
+						.then((newItinierary) =>
+							res.json({ success: true, response: newItinierary.likes })
+						)
+						.catch((error) => console.log(error));
+				}
+			});
+	},
 };
 
 module.exports = itinerariesControllers;

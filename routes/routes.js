@@ -17,6 +17,7 @@ const {
 	modifyItinerary,
 	removeItinerary,
 	findItineraryFromCity,
+	itineraryLikeDislike,
 } = itinerariesControllers;
 
 const { signUpUser, signInUser, getUsers, verifyMail, verifyToken } =
@@ -52,6 +53,12 @@ Router.route("/activities").get(getActivities).post(addActivity);
 Router.route("/activities/:id").put(modifyActivity).delete(removeActivity);
 
 Router.route("activities/itineraries/:id").get(findActivityFromItinerary);
+
+//LIKES-DISLIKES
+Router.route("/itineraries/likes/:id").put(
+	passport.authenticate("jwt", { session: false }),
+	itineraryLikeDislike
+);
 
 //USERS
 Router.route("/users/signup").post(validator, signUpUser); //ACA SE USA EL VALIDATOR PARA EL SIGNUP
