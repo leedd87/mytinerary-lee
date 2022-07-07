@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import "../styles/printItineraries.css";
 import CardItinerary from "./CardItinerary";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import itinerariesActions from "../redux/actions/itinerariesActions";
 
 import ItineraryNotFound from "./ItineraryNotFound";
@@ -11,7 +11,7 @@ import ItineraryNotFound from "./ItineraryNotFound";
 const PrintItineraries = ({ image, name, id }) => {
 	// const { id } = useParams();
 	const [itineraries, setItineraries] = useState();
-	const [reload, setReload] = useState(false);
+	// const [reload, setReload] = useState(false);
 	const dispatch = useDispatch(); //no podemos poner un hook dentro de otro hook
 
 	//ESTOY PROBANDO------

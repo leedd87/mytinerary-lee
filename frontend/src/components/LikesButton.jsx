@@ -6,7 +6,7 @@ import itinerariesActions from "../redux/actions/itinerariesActions";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-const LikesButton = ({ itinerary, handleReload }) => {
+const LikesButton = ({ itinerary }) => {
 	console.log(itinerary._id);
 
 	const dispatch = useDispatch();

@@ -2,8 +2,9 @@ import React from "react";
 import "../styles/activities.css";
 import Comments from "./Comments";
 
-const Activities = ({ activities }) => {
+const Activities = ({ activities, itinerary }) => {
 	console.log(activities);
+	console.log(itinerary);
 
 	const allActivities = activities?.data.response;
 	console.log(allActivities);
@@ -29,7 +30,7 @@ const Activities = ({ activities }) => {
 					<h1 className="text-center">PAGE UNDER CONSTRUCTION</h1>
 				)}
 			</div>
-			<Comments />
+			<Comments itinerary={itinerary} />
 		</>
 	);
 };

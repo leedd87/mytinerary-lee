@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const commentsActions = {
-	addCommentAction: (id) => {
+	addCommentAction: () => {
 		const token = localStorage.getItem("token");
 		return async () => {
 			try {
 				let res = await axios.post(
-					`http://localhost:4000/api/itineraries/comments/${id}`,
+					`http://localhost:4000/api/itineraries/comments/`,
 					{},
 					{ headers: { Authorization: "Bearer " + token } }
 				);
@@ -18,12 +18,12 @@ const commentsActions = {
 		};
 	},
 
-	editCommentAction: (id) => {
+	editCommentAction: () => {
 		const token = localStorage.getItem("token");
 		return async () => {
 			try {
 				let res = await axios.put(
-					`http://localhost:4000/api/itineraries/comments/${id}`,
+					`http://localhost:4000/api/itineraries/comments/`,
 					{},
 					{ headers: { Authorization: "Bearer " + token } }
 				);
@@ -35,12 +35,12 @@ const commentsActions = {
 		};
 	},
 
-	deleteCommentAction: (id) => {
+	deleteCommentAction: (idComment) => {
 		const token = localStorage.getItem("token");
 		return async () => {
 			try {
 				let res = await axios.delete(
-					`http://localhost:4000/api/itineraries/comments/${id}`,
+					`http://localhost:4000/api/itineraries/comments/${idComment}`,
 					{},
 					{ headers: { Authorization: "Bearer " + token } }
 				);

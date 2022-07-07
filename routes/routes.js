@@ -32,7 +32,7 @@ const {
 	findActivityFromItinerary,
 } = activitiesControllers;
 
-const { addComment, editComment, deleteComment } = commentsControllers;
+const { addComment, modifyComment, deleteComment } = commentsControllers;
 
 //RUTAS
 //CITIES
@@ -63,10 +63,15 @@ Router.route("/itineraries/likes/:id").put(
 	itineraryLikeDislike
 );
 
+//COMMENTS
+Router.route("/itineraries/comments/").post(
+	passport.authenticate("jwt", { session: false }),
+	addComment
+);
+
 Router.route("/itineraries/comments/:id")
-	.post(passport.authenticate("jwt", { session: false }), addComment)
-	.put(passport.authenticate("jwt", { session: false }, editComment))
-	.delete(passport.authenticate("jwt", { session: false }, deleteComment));
+	.post(passport.authenticate("jwt", { session: false }), deleteComment)
+	.put(passport.authenticate("jwt", { session: false }), modifyComment);
 
 //USERS
 Router.route("/users/signup").post(validator, signUpUser); //ACA SE USA EL VALIDATOR PARA EL SIGNUP

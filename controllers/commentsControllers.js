@@ -9,7 +9,8 @@ const commentsControllers = {
 				{ _id: itinerary },
 				{ $push: { comments: { comment, userId: user } } },
 				{ new: true }
-			).populate("comments.userId", { userName: 1, userLastName: 1 });
+			).populate("comments.userId"); //aca populo para tener la info del usuario
+			//.populate("comments.userId", { userName: 1, userLastName: 1 }); //aca populo para tener la info del usuario
 			res.json({
 				success: true,
 				response: { newComment },
@@ -24,28 +25,36 @@ const commentsControllers = {
 		}
 	},
 
-	editComment: async (req, res) => {
-		const { commentId, comment } = req.body.comment;
+	modifyComment: async (req, res) => {
+		const { comment } = req.body.comment;
+		const { id } = req.params;
 
+		console.log(req.body);
+		// console.log(id);
+
+		const user = req.user._id;
 		try {
 			const newComment = await Itinerary.findOneAndUpdate(
+				{ "comments._id": id },
 				{
-					"comments._id": commentId,
+					$set: {
+						"comments.$.comment": comment,
+						"comments.$.date": Date.now(),
+					},
 				},
-				{ $set: { "comments.$.comment": comment } },
 				{ new: true }
 			);
 			console.log(newComment);
 			res.json({
 				success: true,
 				response: { newComment },
-				message: "Your comment had change",
+				message: "Your message has change",
 			});
 		} catch (error) {
 			console.log(error);
 			res.json({
 				success: true,
-				message: "Somethig went wrong, please try later",
+				message: "Something went wrong",
 			});
 		}
 	},

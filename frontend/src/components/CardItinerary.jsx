@@ -79,7 +79,9 @@ const CardItinerary = ({ itinerary }) => {
 					</button>
 				</div>
 			)}
-			{showActivities ? <Activities activities={activities} /> : null}
+			{showActivities ? (
+				<Activities activities={activities} itinerary={itinerary} />
+			) : null}
 		</>
 	);
 };

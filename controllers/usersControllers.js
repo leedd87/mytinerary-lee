@@ -135,6 +135,7 @@ const usersControllers = {
 							//los datos del modelo
 							id: userExist._id,
 							userName: userExist.userName,
+							userLastName: userExist.userLastName,
 							email: userExist.email,
 							userPhoto: userExist.userPhoto,
 							from: from,
@@ -177,6 +178,7 @@ const usersControllers = {
 						const userData = {
 							id: userExist._id,
 							userName: userExist.userName,
+							userLastName: userExist.userLastName,
 							email: userExist.email,
 							userPhoto: userExist.userPhoto,
 							from: from,
@@ -244,6 +246,7 @@ const usersControllers = {
 					userName: req.user.userName,
 					email: req.user.email,
 					userPhoto: req.user.userPhoto,
+					userLastName: req.user.userLastName, //agregado
 					from: "token",
 				},
 				message: "Welcome back " + req.user.userName,
