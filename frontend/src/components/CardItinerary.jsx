@@ -4,14 +4,17 @@ import { useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import "../styles/cardItinerary.css";
 import { useDispatch } from "react-redux";
-// import itinerariesActions from "../redux/actions/itinerariesActions";
+import itinerariesActions from "../redux/actions/itinerariesActions";
 import activitiesActions from "../redux/actions/activitiesActions";
+import LikesButton from "./LikesButton";
 
-const CardItinerary = ({ itinerary }) => {
+const CardItinerary = ({ itinerary, handleReload }) => {
+	// const { id } = useParams();
 	const [activities, setActivities] = useState();
+	//revisar
 	const dispatch = useDispatch();
-
 	const [showActivities, setShowActivities] = useState(false);
+
 	const handleClick = async () => {
 		setShowActivities(!showActivities);
 		console.log(showActivities);
@@ -21,13 +24,17 @@ const CardItinerary = ({ itinerary }) => {
 		setActivities(res);
 	};
 
-	//definir si hay un usuario
+	// useEffect(() => {
+	// 	dispatch(itinerariesActions.findItineraryFromCity(id)); //aca le tengo que pasar la accion
+	// }, [reload]);
+	// definir si hay un usuario
 
 	// async function likesDislikes() {
 	// 	let res = await dispatch(
 	// 		itinerariesActions.likeDislikeAction(itinerary._id)
 	// 	);
 	// 	console.log(res);
+	// 	handleReload();
 	// }
 
 	let money = "💵 ";
@@ -50,9 +57,14 @@ const CardItinerary = ({ itinerary }) => {
 				<p className="p-3">Duration: {itinerary.duration}hs</p>
 			</div>
 			<div>
-				<h6 className="text-center">
-					<AiOutlineHeart size={30} />: {itinerary.likes.length}
-				</h6>
+				<LikesButton
+					itinerary={itinerary}
+					//  handleReload={handleReload}
+				/>
+				{/* <h5 className="text-center"> */}
+				{/* <AiOutlineHeart size={30} onClick={likesDislikes} /> : */}
+				{/* {itinerary.likes.length} */}
+				{/* </h5> */}
 			</div>
 			<div className="d-flex justify-content-around">
 				{itinerary.hashtags.map((hashtag, index) => (

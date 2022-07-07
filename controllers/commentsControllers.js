@@ -24,9 +24,9 @@ const commentsControllers = {
 		}
 	},
 
-	modifyComment: async (req, res) => {
+	editComment: async (req, res) => {
 		const { commentId, comment } = req.body.comment;
-		const user = req.user._id; //revisar
+
 		try {
 			const newComment = await Itinerary.findOneAndUpdate(
 				{
@@ -52,7 +52,7 @@ const commentsControllers = {
 
 	deleteComment: async (req, res) => {
 		const id = req.params.id;
-		const user = req.user._id; //revisar
+
 		try {
 			const deleteComment = await Itinerary.findOneAndUpdate(
 				{ "comments._id": id },

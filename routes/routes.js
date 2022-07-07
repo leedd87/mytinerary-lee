@@ -3,6 +3,7 @@ const citiesControllers = require("../controllers/citiesControllers");
 const itinerariesControllers = require("../controllers/itinerariesControllers");
 const usersControllers = require("../controllers/usersControllers");
 const activitiesControllers = require("../controllers/activitiesControllers");
+const commentsControllers = require("../controllers/commentsControllers");
 const validator = require("../config/validator");
 const passport = require("../config/passport");
 
@@ -30,6 +31,8 @@ const {
 	removeActivity,
 	findActivityFromItinerary,
 } = activitiesControllers;
+
+const { addComment, editComment, deleteComment } = commentsControllers;
 
 //RUTAS
 //CITIES
@@ -59,6 +62,11 @@ Router.route("/itineraries/likes/:id").put(
 	passport.authenticate("jwt", { session: false }),
 	itineraryLikeDislike
 );
+
+Router.route("/itineraries/comments/:id")
+	.post(passport.authenticate("jwt", { session: false }), addComment)
+	.put(passport.authenticate("jwt", { session: false }, editComment))
+	.delete(passport.authenticate("jwt", { session: false }, deleteComment));
 
 //USERS
 Router.route("/users/signup").post(validator, signUpUser); //ACA SE USA EL VALIDATOR PARA EL SIGNUP

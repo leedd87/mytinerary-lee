@@ -137,7 +137,11 @@ const itinerariesControllers = {
 						{ new: true } //nueva respuesta
 					)
 						.then((newItinierary) =>
-							res.json({ success: true, response: newItinierary.likes })
+							res.json({
+								success: true,
+								response: newItinierary.likes,
+								message: false,
+							})
 						)
 						.catch((error) => console.log(error));
 				} else {
@@ -147,7 +151,11 @@ const itinerariesControllers = {
 						{ new: true }
 					)
 						.then((newItinierary) =>
-							res.json({ success: true, response: newItinierary.likes })
+							res.json({
+								success: true,
+								response: newItinierary.likes,
+								message: true,
+							})
 						)
 						.catch((error) => console.log(error));
 				}

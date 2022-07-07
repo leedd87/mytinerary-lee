@@ -1,28 +1,39 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import "../styles/printItineraries.css";
 import CardItinerary from "./CardItinerary";
 import { useDispatch, useSelector } from "react-redux";
 import itinerariesActions from "../redux/actions/itinerariesActions";
-// import { useParams } from "react-router-dom";
+
 import ItineraryNotFound from "./ItineraryNotFound";
 
 const PrintItineraries = ({ image, name, id }) => {
 	// const { id } = useParams();
-
+	const [itineraries, setItineraries] = useState();
+	const [reload, setReload] = useState(false);
 	const dispatch = useDispatch(); //no podemos poner un hook dentro de otro hook
 
+	//ESTOY PROBANDO------
 	useEffect(() => {
-		dispatch(itinerariesActions.findItineraryFromCity(id)); //aca le tengo que pasar la accion
+		dispatch(itinerariesActions.findItineraryFromCity(id)).then((itinerary) =>
+			setItineraries(itinerary.data.response)
+		);
+		//aca le tengo que pasar la accion
 		//eslint-disable-next-line
-	}, []);
+	}, []); //AGREGAR RELOAD ACA PROBANDO
 
-	const itineraries = useSelector(
-		(store) => store.itinerariesReducer.itineraries
-	);
+	// let handleReload = () => {
+	// 	setReload(!reload);
+	// };
+	//--------HASTA ACA ESTOY PROBANDO-----
 
-	// console.log(itineraries);
+	// const itineraries = useSelector(
+	// 	(store) => store.itinerariesReducer.itineraries
+	// );
+
+	console.log(itineraries);
+	// const id = useParams();
 
 	return (
 		<>
@@ -39,13 +50,17 @@ const PrintItineraries = ({ image, name, id }) => {
 
 			<h2 className="itinerary-title p-2 rounded mt-3">ITINERARIES</h2>
 
-			{itineraries.length > 0 ? (
-				itineraries.map((itinerary) => (
+			{itineraries?.length > 0 ? (
+				itineraries?.map((itinerary) => (
 					<div
 						className="d-flex flex-column justify-content-center align-items-center bg-white rounded w-100 container my-3 container-card-itinerary"
 						key={itinerary._id}
 					>
-						<CardItinerary itinerary={itinerary} />
+						<CardItinerary
+							itinerary={itinerary}
+
+							// handleReload={handleReload}
+						/>
 					</div>
 				))
 			) : (

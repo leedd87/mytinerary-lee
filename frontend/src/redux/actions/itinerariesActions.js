@@ -11,6 +11,20 @@ const itinerariesActions = {
 				type: "FIND_ITINERARY_FROM_CITY",
 				payload: res.data.response,
 			});
+			return res;
+		};
+	},
+
+	getOneItinerary: (id) => {
+		return async (dispatch, getState) => {
+			const res = await axios.get(
+				`http://localhost:4000/api/itineraries/${id}`
+			);
+			dispatch({
+				type: "GET_ONE_ITINERARY",
+				payload: res.data.response,
+			});
+			return res;
 		};
 	},
 
