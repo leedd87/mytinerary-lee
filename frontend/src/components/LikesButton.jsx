@@ -12,18 +12,26 @@ const LikesButton = ({ itinerary, handleReload }) => {
 	const dispatch = useDispatch();
 	const [reload, setReload] = useState(false);
 	const [likes, setLikes] = useState([]);
-	const [click, setClick] = useState(true);
+	const [oneItinerary, setOneItinerary] = useState([]);
+	// const [click, setClick] = useState(true);
 	const user = useSelector((store) => store.usersReducer.user);
 	console.log(user);
-	console.log(likes);
+
 	useEffect(() => {
 		dispatch(itinerariesActions.getOneItinerary(itinerary._id)) //aca le tengo que pasar la accion
 			.then((res) => setLikes(res.data.response.likes));
-		// .then((res) => console.log(res));
+
 		//eslint-disable-next-line
 	}, [!reload]);
 
-	console.log(likes);
+	useEffect(() => {
+		dispatch(itinerariesActions.getOneItinerary(itinerary._id)) //aca le tengo que pasar la accion
+			.then((res) => setOneItinerary(res.data.response));
+
+		//eslint-disable-next-line
+	}, [!reload]);
+
+	console.log(oneItinerary);
 
 	async function likesDislikes() {
 		let res = await dispatch(
@@ -31,12 +39,12 @@ const LikesButton = ({ itinerary, handleReload }) => {
 		);
 		console.log(res);
 		setReload(!reload);
-		setClick(!click);
+		// setClick(!click);
 		if (user) {
 			if (res.data.message) {
 				toast.success("Thank you for your like");
 			} else {
-				toast.error("Bad you dislike");
+				toast.error("Ohh you dislike😭");
 			}
 		} else {
 			toast.error("Log in to like! if not please sign up!😊");
@@ -47,7 +55,7 @@ const LikesButton = ({ itinerary, handleReload }) => {
 		<>
 			{user ? (
 				<h5 className="text-center" onClick={likesDislikes}>
-					{likes.includes(user.userData.id) ? (
+					{likes?.includes(user.userData.id) ? (
 						<AiFillHeart size={30} />
 					) : (
 						<AiOutlineHeart size={30} />

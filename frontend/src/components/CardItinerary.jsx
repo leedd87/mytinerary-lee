@@ -1,14 +1,14 @@
 import React from "react";
 import Activities from "./Activities";
 import { useState } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+
 import "../styles/cardItinerary.css";
 import { useDispatch } from "react-redux";
-import itinerariesActions from "../redux/actions/itinerariesActions";
+
 import activitiesActions from "../redux/actions/activitiesActions";
 import LikesButton from "./LikesButton";
 
-const CardItinerary = ({ itinerary, handleReload }) => {
+const CardItinerary = ({ itinerary }) => {
 	// const { id } = useParams();
 	const [activities, setActivities] = useState();
 	//revisar
@@ -57,14 +57,7 @@ const CardItinerary = ({ itinerary, handleReload }) => {
 				<p className="p-3">Duration: {itinerary.duration}hs</p>
 			</div>
 			<div>
-				<LikesButton
-					itinerary={itinerary}
-					//  handleReload={handleReload}
-				/>
-				{/* <h5 className="text-center"> */}
-				{/* <AiOutlineHeart size={30} onClick={likesDislikes} /> : */}
-				{/* {itinerary.likes.length} */}
-				{/* </h5> */}
+				<LikesButton itinerary={itinerary} />
 			</div>
 			<div className="d-flex justify-content-around">
 				{itinerary.hashtags.map((hashtag, index) => (

@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/activities.css";
+import Comments from "./Comments";
 
 const Activities = ({ activities }) => {
 	console.log(activities);
@@ -28,6 +29,7 @@ const Activities = ({ activities }) => {
 					<h1 className="text-center">PAGE UNDER CONSTRUCTION</h1>
 				)}
 			</div>
+			<Comments />
 		</>
 	);
 };
