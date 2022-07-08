@@ -4,6 +4,7 @@ import "react-comments-section/dist/index.css";
 import { useDispatch, useSelector } from "react-redux";
 import commentsActions from "../redux/actions/commentsActions";
 import itinerariesActions from "../redux/actions/itinerariesActions";
+import "../styles/comments.css";
 
 const Comments = ({ itinerary, handleReload }) => {
 	const dispatch = useDispatch();
@@ -22,30 +23,19 @@ const Comments = ({ itinerary, handleReload }) => {
 
 		//eslint-disable-next-line
 	}, [reload]);
-	// console.log("hola comentario", comments);
-
-	// function handleChange(event) {
-	// 	setInput(event.target.value);
-	// 	// console.log("value is", event.target.value);
-	// }
-	// console.log(input);
 
 	async function handleAddComment(event) {
 		event.preventDefault();
-		// console.log("handleAddComment", input);
+
 		const comment = {
-			itinerary: itinerary._id, //itinerary._id
+			itinerary: itinerary._id,
 			comment: input,
 		};
-		// console.log(comment);
+
 		await dispatch(commentsActions.addCommentAction(comment));
 		setInput("");
 		setReload(!reload);
 	}
-	// const handleChange = event => {
-	// 	setInput(event.target.value);
-	// 	console.log("value is", event.targe.value);
-	// }
 
 	async function deleteComment(event) {
 		console.log(event);
@@ -66,59 +56,94 @@ const Comments = ({ itinerary, handleReload }) => {
 	return (
 		<>
 			<h2>Comments</h2>
-			<div className="w-100">
-				{comments?.map((comment, index) => (
-					<div key={index} style={{ marginBottom: "1rem" }}>
-						<div
-							suppressContentEditableWarning={true}
-							contentEditable
-							onInput={(event) =>
-								setModifyInput(event.currentTarget.textContent)
-							}
-							type="text"
-							style={{ border: "1px solid black" }}
-						>
-							{comment.comment}
-						</div>
-						<button onClick={() => modifyComment(comment._id)}>
-							Modify
-						</button>
-						<button onClick={() => deleteComment(comment._id)}>
-							Delete
+			{user ? (
+				<>
+					<div className="w-100 my-3">
+						{comments?.map((comment) => (
+							<div
+								className="d-flex align-items-center bg-primary p-2 rounded flex-column flex-md-row"
+								key={comment._id}
+							>
+								<div className="d-flex align-items-center">
+									<img
+										src={comment?.userId.userPhoto}
+										className="rounded-circle mx-5"
+										style={{ width: 65 }}
+										alt="Avatar"
+									/>
+									<h5 className="me-3 my-0">
+										{comment?.userId.userName +
+											" " +
+											comment?.userId.userLastName}
+									</h5>
+								</div>
+								<div
+									suppressContentEditableWarning={true}
+									contentEditable
+									onInput={(event) =>
+										setModifyInput(event.currentTarget.textContent)
+									}
+									type="text"
+									className="w-75 comment-font"
+								>
+									{comment.comment}
+								</div>
+								<div className="d-flex flex-column flex-md-row">
+									<button
+										className="btn"
+										onClick={() => modifyComment(comment._id)}
+									>
+										Modify
+									</button>
+									<button
+										className="btn"
+										onClick={() => deleteComment(comment._id)}
+									>
+										Delete
+									</button>
+								</div>
+							</div>
+						))}
+					</div>
+					<div className="w-100 d-flex my-3">
+						<input
+							type="text-area"
+							placeholder="Agregar un comentario"
+							className="w-100"
+							onChange={(e) => setInput(e.target.value)}
+							value={input}
+						/>
+						<button className="btn" onClick={handleAddComment}>
+							Add Comment
 						</button>
 					</div>
-
-					// <div
-					// 	className="d-flex align-items-center bg-primary"
-					// 	key={comment._id}
-					// >
-					// 	<img
-					// 		src={comment?.userId.userPhoto}
-					// 		className="rounded-circle mx-5"
-					// 		style={{ width: 65 }}
-					// 		alt="Avatar"
-					// 	/>
-					// 	<div className="d-flex align-items-center ">
-					// 		<h5 className="me-3 my-0">
-					// 			{comment?.userId.userName +
-					// 				" " +
-					// 				comment?.userId.userLastName}
-					// 		</h5>
-					// 		<p className="my-0">{comment.comment}</p>
-					// 	</div>
-					// </div>
-				))}
-			</div>
-			<div className="w-100 d-flex">
-				<input
-					type="text-area"
-					placeholder="Agregar un comentario"
-					className="w-100"
-					onChange={(e) => setInput(e.target.value)}
-					value={input}
-				/>
-				<button onClick={handleAddComment}>Add Comment</button>
-			</div>
+				</>
+			) : (
+				<div className="w-100">
+					{comments?.map((comment) => (
+						<div
+							className="d-flex align-items-center bg-primary"
+							key={comment._id}
+						>
+							<img
+								src={comment?.userId.userPhoto}
+								className="rounded-circle mx-5"
+								style={{ width: 65 }}
+								alt="Avatar"
+							/>
+							<div className="d-flex align-items-center ">
+								<h5 className="me-3 my-0">
+									{comment?.userId.userName +
+										" " +
+										comment?.userId.userLastName}
+								</h5>
+								<div className="container">{comment.comment}</div>
+							</div>
+						</div>
+					))}
+					<div>PLEASE SIGN UP OR LOG IN</div>
+				</div>
+			)}
 		</>
 	);
 };
