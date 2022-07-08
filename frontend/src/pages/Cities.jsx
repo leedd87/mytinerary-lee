@@ -25,8 +25,6 @@ function Cities() {
 	return (
 		<div className="d-flex flex-column justify-content-center align-items-center">
 			<div className="form__group field mb-4">
-				{" "}
-				{/* //revisar */}
 				<input
 					required=""
 					placeholder="City"

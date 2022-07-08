@@ -23,6 +23,7 @@ function NavBar() {
 					</div>
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav d-flex align-items" />
+
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
 						<div className="d-flex align-items-center flex-column flex-sm-row">
@@ -56,18 +57,22 @@ function NavBar() {
 						>
 							{!user ? (
 								<>
-									<LinkRouter
-										to="/users/signin"
-										className="mx-2 signin"
-									>
-										Sign in
-									</LinkRouter>
-									<LinkRouter
-										to="/users/signup"
-										className="mx-2 signup"
-									>
-										Sign up
-									</LinkRouter>
+									<NavDropdown.Item>
+										<LinkRouter
+											to="/users/signin"
+											className="mx-2 signin"
+										>
+											Sign in
+										</LinkRouter>
+									</NavDropdown.Item>
+									<NavDropdown.Item>
+										<LinkRouter
+											to="/users/signup"
+											className="mx-2 signup"
+										>
+											Sign up
+										</LinkRouter>
+									</NavDropdown.Item>
 								</>
 							) : (
 								<>

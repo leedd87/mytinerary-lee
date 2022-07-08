@@ -2,3 +2,26 @@
    font-size: 1.5rem;
 
 }
+
+.bg-name-avatar {
+   background-color: #F05454;
+   color: white;
+}
+
+.bg-comment {
+   background-color: #F05454;
+   color: white;
+}
+
+.bg-comment-section {
+   background-color: #30475E;
+   color: white;
+}
+
+.btn-comment {
+   color: white;
+}
+
+.btn-add-comment {
+   background-color: #F05454;
+}
