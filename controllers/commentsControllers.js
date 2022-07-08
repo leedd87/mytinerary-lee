@@ -27,7 +27,7 @@ const commentsControllers = {
 
 	modifyComment: async (req, res) => {
 		const { comment } = req.body.comment;
-		const { id } = req.params;
+		const id = req.params.id;
 
 		console.log(req.body);
 		// console.log(id);

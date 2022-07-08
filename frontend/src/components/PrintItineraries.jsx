@@ -58,7 +58,6 @@ const PrintItineraries = ({ image, name, id }) => {
 					>
 						<CardItinerary
 							itinerary={itinerary}
-
 							// handleReload={handleReload}
 						/>
 					</div>

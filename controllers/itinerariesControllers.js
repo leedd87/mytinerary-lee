@@ -5,7 +5,13 @@ const itinerariesControllers = {
 		let itineraries;
 		let error = null;
 		try {
-			itineraries = await Itinerary.find().populate("city");
+			itineraries = await Itinerary.find()
+				.populate("city")
+				.populate("comments.userId", {
+					userLastName: 1,
+					userName: 1,
+					userPhoto: 1,
+				});
 		} catch (err) {
 			error = err;
 			console.log("Something went wrong");
@@ -24,7 +30,7 @@ const itinerariesControllers = {
 		try {
 			itinerary = await Itinerary.findOne({ _id: id }).populate(
 				"comments.userId",
-				{ userLastName: 1, userName: 1 }
+				{ userLastName: 1, userName: 1, userPhoto: 1 }
 			);
 		} catch (err) {
 			error = err;
@@ -112,9 +118,15 @@ const itinerariesControllers = {
 		let itineraries;
 		let error = null;
 		try {
-			itineraries = await Itinerary.find({ city: cityId }).populate("city", {
-				name: 1,
-			});
+			itineraries = await Itinerary.find({ city: cityId })
+				.populate("city", {
+					name: 1,
+				})
+				.populate("comments.userId", {
+					userLastName: 1,
+					userName: 1,
+					userPhoto: 1,
+				});
 		} catch (err) {
 			error = err;
 		}
