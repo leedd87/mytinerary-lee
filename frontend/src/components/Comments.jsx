@@ -34,7 +34,6 @@ const Comments = ({ itinerary, handleReload }) => {
 			itinerary: itinerary._id,
 			comment: input,
 		};
-
 		await dispatch(commentsActions.addCommentAction(comment));
 		setInput("");
 		setReload(!reload);

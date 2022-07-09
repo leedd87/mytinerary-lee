@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/activities.css";
 import Comments from "./Comments";
-import PrintComments from "./PrintComments";
+// import PrintComments from "./PrintComments";
 
 const Activities = ({ activities, itinerary }) => {
 	// console.log(activities);
@@ -33,7 +33,7 @@ const Activities = ({ activities, itinerary }) => {
 					<h1 className="text-center">PAGE UNDER CONSTRUCTION</h1>
 				)}
 			</div>
-			<PrintComments itinerary={itinerary} />
+			{/* <PrintComments itinerary={itinerary} /> */}
 			<Comments itinerary={itinerary} />
 		</>
 	);
