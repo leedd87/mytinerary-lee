@@ -112,7 +112,7 @@ const usersControllers = {
 		const { email, password, from } = req.body.logedUser;
 		try {
 			const userExist = await User.findOne({ email });
-			console.log(userExist);
+			// console.log(userExist);
 			// const indexPass = userExist.from.indexOf(from);
 			if (!userExist) {
 				//EL USUARIO NO EXISTE
@@ -129,7 +129,7 @@ const usersControllers = {
 					let passwordMatch = userExist.password.filter((pass) =>
 						bcryptjs.compareSync(password, pass)
 					);
-					console.log(passwordMatch);
+					// console.log(passwordMatch);
 					if (passwordMatch.length > 0) {
 						const userData = {
 							//los datos del modelo
@@ -169,7 +169,7 @@ const usersControllers = {
 					let passwordMatch = userExist.password.filter(
 						(pass) => bcryptjs.compareSync(password, pass) //si devuelve un length mayor a 0 quiere decir que coinciden
 					);
-					console.log(passwordMatch.length);
+					// console.log(passwordMatch.length);
 					if (
 						//SI SE REGISTRO Y SU MAIL ESTA VERIFICADO
 						passwordMatch.length > 0 &&
@@ -223,7 +223,7 @@ const usersControllers = {
 	verifyMail: async (req, res) => {
 		const { string } = req.params;
 		const user = await User.findOne({ uniqueString: string });
-		console.log(user);
+		// console.log(user);
 
 		if (user) {
 			user.verification = true;

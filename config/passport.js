@@ -11,11 +11,11 @@ module.exports = passport.use(
 			secretOrKey: process.env.SECRET_KEY, //con nuestro secretkey
 		},
 		(jwt_payload, done) => {
-			console.log(jwt_payload);
+			// console.log(jwt_payload);
 			User.findOne({ _id: jwt_payload.id }) //busca por el id de la base de datos que coincida con el id del token
 
 				.then((user) => {
-					console.log(user);
+					// console.log(user);
 					if (user) {
 						return done(null, user);
 					} else if (err) {

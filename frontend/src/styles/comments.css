@@ -20,6 +20,8 @@
 
 .btn-comment {
    color: white;
+   background-color: #30475E;
+   height: 2.5rem;
 }
 
 .btn-add-comment {

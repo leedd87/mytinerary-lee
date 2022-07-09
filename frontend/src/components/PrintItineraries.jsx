@@ -32,9 +32,6 @@ const PrintItineraries = ({ image, name, id }) => {
 	// 	(store) => store.itinerariesReducer.itineraries
 	// );
 
-	console.log(itineraries);
-	// const id = useParams();
-
 	return (
 		<>
 			<div
@@ -56,10 +53,7 @@ const PrintItineraries = ({ image, name, id }) => {
 						className="d-flex flex-column justify-content-center align-items-center bg-white rounded w-100 container my-3 container-card-itinerary"
 						key={itinerary._id}
 					>
-						<CardItinerary
-							itinerary={itinerary}
-							// handleReload={handleReload}
-						/>
+						<CardItinerary itinerary={itinerary} />
 					</div>
 				))
 			) : (

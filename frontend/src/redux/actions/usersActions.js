@@ -72,7 +72,7 @@ const usersActions = {
 					headers: { Authorization: "Bearer " + token },
 				})
 				.then((user) => {
-					console.log("PASO POR USER DE VERIFYTOKEN");
+					// console.log("PASO POR USER DE VERIFYTOKEN");
 					if (user.data.success) {
 						// dispatch({ type: "SIGN_IN", payload: user.data.response }); //revisar si anda mal
 						dispatch({
@@ -89,7 +89,7 @@ const usersActions = {
 					}
 				})
 				.catch((error) => {
-					console.log("PASO POR EL USER ACTION CATCH");
+					// console.log("PASO POR EL USER ACTION CATCH");
 
 					if (error.response.status === 401)
 						dispatch({

@@ -3,13 +3,17 @@
 }
 
 
-.form__group {
+
+
+.form__group_position {
    position: relative;
    padding: 20px 0 0;
+   width: 90%;
    margin-top: 10px;
-   width: 100%;
-   max-width: 180px;
+
 }
+
+
 
 .form__field {
    font-family: inherit;

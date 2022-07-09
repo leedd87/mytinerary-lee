@@ -29,7 +29,7 @@ const commentsControllers = {
 		const { comment } = req.body.comment;
 		const id = req.params.id;
 
-		console.log(req.body);
+		// console.log(req.body);
 		// console.log(id);
 
 		const user = req.user._id;
@@ -68,7 +68,7 @@ const commentsControllers = {
 				{ $pull: { comments: { _id: id } } },
 				{ new: true }
 			);
-			console.log(deleteComment);
+			// console.log(deleteComment);
 			res.json({
 				success: true,
 			});

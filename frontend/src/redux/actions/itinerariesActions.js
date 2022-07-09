@@ -39,7 +39,7 @@ const itinerariesActions = {
 					{}, //...el body y luego...
 					{ headers: { Authorization: "Bearer " + token } } //el headers, si no va a asi el headers nunca va a llegar porque va a tomarlo como "body"
 				);
-				console.log(res);
+
 				return res;
 			} catch (error) {
 				console.log(error);

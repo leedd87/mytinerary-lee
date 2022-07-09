@@ -7,8 +7,6 @@ import "../styles/itinerariesPage.css";
 const Itineraries = () => {
 	const { id } = useParams();
 
-	console.log(id);
-
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -17,7 +15,6 @@ const Itineraries = () => {
 	}, []);
 
 	const city = useSelector((store) => store.citiesReducer.city);
-	console.log(city);
 
 	return (
 		//HERO COMPONENT

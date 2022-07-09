@@ -26,7 +26,7 @@ function NavBar() {
 
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
-						<div className="d-flex align-items-center flex-column flex-sm-row">
+						<div className="d-flex  flex-column flex-sm-row">
 							<LinkRouter to="/" className="linkRouter mx-2">
 								Home
 							</LinkRouter>
@@ -46,9 +46,10 @@ function NavBar() {
 									/>
 								) : (
 									<img
-										src={user.userData.userPhoto}
+										src={user?.userData.userPhoto}
 										alt={user.userData.userName}
 										className="drop-down-icon user-photo-nav-bar"
+										referrerPolicy="no-referrer"
 									/>
 								)
 							}
@@ -76,13 +77,15 @@ function NavBar() {
 								</>
 							) : (
 								<>
-									<LinkRouter
-										to="/"
-										className="mx-2 signup"
-										onClick={handleClick}
-									>
-										Sign out
-									</LinkRouter>
+									<NavDropdown.Item>
+										<LinkRouter
+											to="/"
+											className="mx-2 signup"
+											onClick={handleClick}
+										>
+											Sign out
+										</LinkRouter>
+									</NavDropdown.Item>
 								</>
 							)}
 						</NavDropdown>

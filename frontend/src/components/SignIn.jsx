@@ -22,8 +22,8 @@ const SignIn = () => {
 			from: "form-signin",
 		};
 		let res = await dispatch(usersActions.signInUser(logedUser));
-		console.log(res);
-		console.log(res.data.message);
+		// console.log(res);
+		// console.log(res.data.message);
 
 		let messagePopUp = res.data.message;
 		if (res.data.success) {

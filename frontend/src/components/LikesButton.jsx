@@ -7,15 +7,12 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 const LikesButton = ({ itinerary }) => {
-	console.log(itinerary._id);
-
 	const dispatch = useDispatch();
 	const [reload, setReload] = useState(false);
 	const [likes, setLikes] = useState([]);
-	const [oneItinerary, setOneItinerary] = useState([]);
+	// const [oneItinerary, setOneItinerary] = useState([]);
 	// const [click, setClick] = useState(true);
 	const user = useSelector((store) => store.usersReducer.user);
-	console.log(user);
 
 	useEffect(() => {
 		dispatch(itinerariesActions.getOneItinerary(itinerary._id)) //aca le tengo que pasar la accion
@@ -24,20 +21,18 @@ const LikesButton = ({ itinerary }) => {
 		//eslint-disable-next-line
 	}, [!reload]);
 
-	useEffect(() => {
-		dispatch(itinerariesActions.getOneItinerary(itinerary._id)) //aca le tengo que pasar la accion
-			.then((res) => setOneItinerary(res.data.response));
+	// useEffect(() => {
+	// 	dispatch(itinerariesActions.getOneItinerary(itinerary._id)) //aca le tengo que pasar la accion
+	// 		.then((res) => setOneItinerary(res.data.response));
 
-		//eslint-disable-next-line
-	}, [!reload]);
-
-	console.log(oneItinerary);
+	// 	//eslint-disable-next-line
+	// }, [!reload]);
 
 	async function likesDislikes() {
 		let res = await dispatch(
 			itinerariesActions.likeDislikeAction(itinerary._id)
 		);
-		console.log(res);
+
 		setReload(!reload);
 		// setClick(!click);
 		if (user) {
