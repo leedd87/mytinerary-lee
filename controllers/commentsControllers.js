@@ -14,7 +14,7 @@ const commentsControllers = {
 			res.json({
 				success: true,
 				response: { newComment },
-				message: "Thank your for commenting",
+				message: "Thank your for commenting 😃",
 			});
 		} catch (error) {
 			console.log(error);
@@ -44,11 +44,11 @@ const commentsControllers = {
 				},
 				{ new: true }
 			);
-			console.log(newComment);
+			// console.log(newComment);
 			res.json({
 				success: true,
 				response: { newComment },
-				message: "Your message has change",
+				message: "Your message has change 🫣",
 			});
 		} catch (error) {
 			console.log(error);
@@ -71,6 +71,7 @@ const commentsControllers = {
 			// console.log(deleteComment);
 			res.json({
 				success: true,
+				message: "We delete your comment 🥲🤕",
 			});
 		} catch (error) {
 			console.log(error);

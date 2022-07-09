@@ -10,7 +10,7 @@ const commentsActions = {
 					{ comment },
 					{ headers: { Authorization: "Bearer " + token } }
 				);
-
+				console.log(res);
 				return res;
 			} catch (error) {
 				console.log(error);

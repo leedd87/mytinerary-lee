@@ -9,28 +9,26 @@ import itinerariesActions from "../redux/actions/itinerariesActions";
 import ItineraryNotFound from "./ItineraryNotFound";
 
 const PrintItineraries = ({ image, name, id }) => {
-	// const { id } = useParams();
 	const [itineraries, setItineraries] = useState();
 	// const [reload, setReload] = useState(false);
 	const dispatch = useDispatch(); //no podemos poner un hook dentro de otro hook
 
 	//ESTOY PROBANDO------
 	useEffect(() => {
-		dispatch(itinerariesActions.findItineraryFromCity(id)).then((itinerary) =>
-			setItineraries(itinerary.data.response)
+		dispatch(itinerariesActions.findItineraryFromCity(id)).then(
+			(
+				itinerary //ME TRAE TODOS LOS ITINERARIOS DE ESA CIUDAD
+			) => setItineraries(itinerary.data.response)
 		);
 		//aca le tengo que pasar la accion
 		//eslint-disable-next-line
 	}, []); //AGREGAR RELOAD ACA PROBANDO
 
+	// console.log(itineraries); //ME TRAE TODOS LOS ITINERARIOS DE ESA CIUDAD
 	// let handleReload = () => {
 	// 	setReload(!reload);
 	// };
 	//--------HASTA ACA ESTOY PROBANDO-----
-
-	// const itineraries = useSelector(
-	// 	(store) => store.itinerariesReducer.itineraries
-	// );
 
 	return (
 		<>

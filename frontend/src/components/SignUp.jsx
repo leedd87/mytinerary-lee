@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import GoogleSignUp from "./GoogleSignUp";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -76,6 +76,7 @@ const SignUp = () => {
 							</option>
 						))}
 					</Form.Select>
+
 					{country ? (
 						<Form onSubmit={handleSubmit}>
 							<Form.Group className="mb-3">

@@ -18,6 +18,7 @@ import { useEffect } from "react";
 // import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import usersActions from "./redux/actions/usersActions";
 import SignUp from "./components/SignUp";
 

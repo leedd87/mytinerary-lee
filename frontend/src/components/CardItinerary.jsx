@@ -22,6 +22,8 @@ const CardItinerary = ({ itinerary }) => {
 		setActivities(res);
 	};
 
+	// console.log(itinerary);
+
 	let money = "💵 ";
 
 	return (
@@ -51,6 +53,9 @@ const CardItinerary = ({ itinerary }) => {
 					</h6>
 				))}
 			</div>
+			{showActivities ? (
+				<Activities activities={activities} itinerary={itinerary} />
+			) : null}
 			{!showActivities ? (
 				<div className="d-flex justify-content-center my-4">
 					<button onClick={handleClick} className="btn-itinerary">
@@ -64,9 +69,6 @@ const CardItinerary = ({ itinerary }) => {
 					</button>
 				</div>
 			)}
-			{showActivities ? (
-				<Activities activities={activities} itinerary={itinerary} />
-			) : null}
 		</>
 	);
 };

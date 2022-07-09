@@ -4,6 +4,7 @@ import "react-comments-section/dist/index.css";
 import { useDispatch } from "react-redux";
 import commentsActions from "../redux/actions/commentsActions";
 import "../styles/comments.css";
+import { toast } from "react-toastify";
 
 const Comment = ({ comment, user, handleReload }) => {
 	const dispatch = useDispatch();
@@ -11,8 +12,11 @@ const Comment = ({ comment, user, handleReload }) => {
 
 	async function deleteComment(event) {
 		// console.log(event);
-		await dispatch(commentsActions.deleteCommentAction(event));
-
+		let res = await dispatch(commentsActions.deleteCommentAction(event));
+		let messagePopUp = res.data.message;
+		if (res.data.success) {
+			toast.warn(messagePopUp, { position: "top-center" });
+		}
 		handleReload();
 	}
 
@@ -21,9 +25,13 @@ const Comment = ({ comment, user, handleReload }) => {
 		const comment = {
 			comment: modifyInput,
 		};
-		// console.log(comment);
-		await dispatch(commentsActions.editCommentAction(comment, id));
 
+		let res = await dispatch(commentsActions.editCommentAction(comment, id));
+
+		let messagePopUp = res.data.message;
+		if (res.data.success) {
+			toast.info(messagePopUp, { position: "top-center" });
+		}
 		handleReload();
 	}
 
@@ -31,7 +39,7 @@ const Comment = ({ comment, user, handleReload }) => {
 		<>
 			<div className="d-flex align-items-center w-100 py-3 mb-3 rounded bg-name-avatar">
 				<img
-					src={comment?.userId.userPhoto}
+					src={comment.userId.userPhoto ? comment.userId.userPhoto : null}
 					className="rounded-circle mx-5 border border-dark"
 					style={{ width: 65 }}
 					alt="Avatar"

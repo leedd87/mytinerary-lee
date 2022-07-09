@@ -7,6 +7,7 @@ import itinerariesActions from "../redux/actions/itinerariesActions";
 import "../styles/comments.css";
 import Comment from "./Comment";
 import { Link as LinkRouter } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Comments = ({ itinerary }) => {
 	const dispatch = useDispatch();
@@ -18,6 +19,8 @@ const Comments = ({ itinerary }) => {
 	let handleReload = () => {
 		setReload(!reload);
 	};
+
+	// console.log(itinerary);
 
 	useEffect(() => {
 		dispatch(itinerariesActions.getOneItinerary(itinerary._id)) //aca le tengo que pasar la accion
@@ -31,13 +34,23 @@ const Comments = ({ itinerary }) => {
 	async function handleAddComment(event) {
 		event.preventDefault();
 
-		const comment = {
-			itinerary: itinerary._id,
-			comment: input,
-		};
-		await dispatch(commentsActions.addCommentAction(comment));
-		setInput("");
-		setReload(!reload);
+		if (input !== "") {
+			const comment = {
+				itinerary: itinerary._id,
+				comment: input,
+			};
+			let res = await dispatch(commentsActions.addCommentAction(comment));
+			let messagePopUp = res.data.message;
+			if (res.data.success) {
+				toast.success(messagePopUp, { position: "top-center" });
+			}
+			setInput("");
+			setReload(!reload);
+		} else {
+			toast.error("You need to complete the comment", {
+				position: "top-center",
+			});
+		}
 	}
 
 	return (
@@ -104,7 +117,10 @@ const Comments = ({ itinerary }) => {
 						</div>
 					))}
 					<div className="d-flex justify-content-center">
-						<LinkRouter to="/users/signup" className="mx-2 signup">
+						<LinkRouter
+							to="/users/signup"
+							className="mx-2 signup signup-comment-message-link p-2 rounded w-50 text-center justify-self-center"
+						>
 							SIGN UP AND COMMENT
 						</LinkRouter>
 					</div>
