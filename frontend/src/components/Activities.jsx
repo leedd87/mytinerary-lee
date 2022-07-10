@@ -5,7 +5,7 @@ import Comments from "./Comments";
 
 const Activities = ({ activities, itinerary }) => {
 	// console.log(activities);
-	// console.log(itinerary);
+	console.log(itinerary);
 
 	const allActivities = activities?.data.response;
 	// console.log(allActivities);

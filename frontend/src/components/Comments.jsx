@@ -20,7 +20,7 @@ const Comments = ({ itinerary }) => {
 		setReload(!reload);
 	};
 
-	// console.log(itinerary);
+	console.log(itinerary);
 
 	useEffect(() => {
 		dispatch(itinerariesActions.getOneItinerary(itinerary._id)) //aca le tengo que pasar la accion

@@ -22,7 +22,7 @@ const CardItinerary = ({ itinerary }) => {
 		setActivities(res);
 	};
 
-	// console.log(itinerary);
+	console.log(itinerary);
 
 	let money = "💵 ";
 

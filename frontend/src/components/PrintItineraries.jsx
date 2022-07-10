@@ -24,7 +24,7 @@ const PrintItineraries = ({ image, name, id }) => {
 		//eslint-disable-next-line
 	}, []); //AGREGAR RELOAD ACA PROBANDO
 
-	// console.log(itineraries); //ME TRAE TODOS LOS ITINERARIOS DE ESA CIUDAD
+	console.log(itineraries); //ME TRAE TODOS LOS ITINERARIOS DE ESA CIUDAD
 	// let handleReload = () => {
 	// 	setReload(!reload);
 	// };
