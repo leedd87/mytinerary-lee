@@ -4,7 +4,7 @@ const express = require("express");
 const Router = require("./routes/routes");
 const cors = require("cors");
 const passport = require("passport");
-const PORT = procces.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
