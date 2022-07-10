@@ -24,9 +24,8 @@ function Cities() {
 
 	return (
 		<div className="d-flex flex-column justify-content-center align-items-center">
-			<div className=" field mb-4 container form__group_position">
+			<div className=" field mb-4 container form__group_position w-50">
 				<input
-					required=""
 					placeholder="City"
 					className="form__field"
 					type="input"
@@ -54,7 +53,6 @@ function Cities() {
 						<Error />
 					)}
 				</div>
-				<div></div>
 			</div>
 		</div>
 	);
