@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { CLIENT_ID } from "../consts/google";
 
 const GoogleSignUp = ({ pais }) => {
 	const dispatch = useDispatch();
@@ -53,8 +52,8 @@ const GoogleSignUp = ({ pais }) => {
 		/* global google */
 		google.accounts.id.initialize({
 			//inicializador
-			client_id: CLIENT_ID,
-			//"561756246857-vf9thunmmq3mpqoldqk8i9l8ottsmlfb.apps.googleusercontent.com", //env o sin env
+			client_id:
+				"561756246857-vf9thunmmq3mpqoldqk8i9l8ottsmlfb.apps.googleusercontent.com", //env o sin env
 			callback: handleCallbackResponse, //una funcion para ver como se maneja la respuesta.
 			//nos va a mandar la info que recibamos de google a nuestro backend y a nuestra bd y asi poder autenticar al usuario
 		});

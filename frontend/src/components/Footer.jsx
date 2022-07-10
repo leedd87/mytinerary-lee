@@ -4,7 +4,7 @@ import "../styles/footer.css";
 
 function Footer() {
 	return (
-		<div className="d-flex align-items-center justify-content-between footer-container flex-column flex-sm-row">
+		<div className="d-flex align-items-center justify-content-between footer-container flex-column flex-sm-row p-3">
 			<div className="d-flex align-items-center justify-content-center mx-5">
 				<h6 className="mb-0 logo-text">MyTinerary</h6>
 			</div>

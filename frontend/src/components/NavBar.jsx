@@ -62,22 +62,23 @@ function NavBar() {
 						>
 							{!user ? (
 								<>
-									{/* <NavDropdown.Item> */}
-									<LinkRouter
-										to="/users/signin"
-										className="mx-2 signin "
-									>
-										Sign in
-									</LinkRouter>
-									{/* </NavDropdown.Item> */}
-									{/* <NavDropdown.Item> */}
-									<LinkRouter
-										to="/users/signup"
-										className="mx-2 signup"
-									>
-										Sign up
-									</LinkRouter>
-									{/* </NavDropdown.Item> */}
+									<NavDropdown.Item>
+										<LinkRouter
+											to="/users/signin"
+											className="mx-2 signin "
+										>
+											Sign in
+										</LinkRouter>
+									</NavDropdown.Item>
+
+									<NavDropdown.Item>
+										<LinkRouter
+											to="/users/signup"
+											className="mx-2 signup"
+										>
+											Sign up
+										</LinkRouter>
+									</NavDropdown.Item>
 								</>
 							) : (
 								<>

@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 import { useDispatch } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import { toast } from "react-toastify";
-import { CLIENT_ID } from "../consts/google";
+
 import { useNavigate } from "react-router-dom";
 
 const GoogleSignIn = ({ country }) => {
@@ -37,7 +37,8 @@ const GoogleSignIn = ({ country }) => {
 		/* global google */
 		google.accounts.id.initialize({
 			//inicializador
-			client_id: CLIENT_ID,
+			client_id:
+				"561756246857-vf9thunmmq3mpqoldqk8i9l8ottsmlfb.apps.googleusercontent.com",
 			callback: handleCallbackResponse, //una funcion para ver como se maneja la respuesta. nos va a mandar la info que recibamos de google a nuestro backend y a nuestra bd y asi poder autenticar al usuario
 		});
 
