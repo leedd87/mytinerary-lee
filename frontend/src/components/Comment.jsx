@@ -34,8 +34,8 @@ const Comment = ({ comment, user, handleReload }) => {
 		}
 		handleReload();
 	}
-	console.log(comment);
-	console.log(user);
+	// console.log(comment);
+	// console.log(user);
 	return (
 		<>
 			<div className="d-flex align-items-center w-100 py-3 mb-3 rounded bg-name-avatar">
