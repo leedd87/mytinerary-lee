@@ -1,13 +1,14 @@
 import axios from "axios";
 
+const url = "http://localhost:4000/";
+
 const usersActions = {
 	signUpUser: (userData) => {
 		return async (dispatch, getState) => {
 			try {
-				const res = await axios.post(
-					"http://localhost:4000/api/users/signup",
-					{ userData }
-				);
+				const res = await axios.post(url + "api/users/signup", {
+					userData,
+				});
 
 				dispatch({
 					type: "SIGN_UP_MESSAGE", //cambio de nombre antes MESSAGE
@@ -25,10 +26,7 @@ const usersActions = {
 	},
 	signInUser: (logedUser) => {
 		return async (dispatch, getState) => {
-			const res = await axios.post(
-				"http://localhost:4000/api/users/signin",
-				{ logedUser }
-			);
+			const res = await axios.post(url + "api/users/signin", { logedUser });
 
 			if (res.data.success) {
 				localStorage.setItem("token", res.data.response.token);
@@ -68,7 +66,7 @@ const usersActions = {
 	verifyToken: (token) => {
 		return async (dispatch, getState) => {
 			await axios
-				.get("http://localhost:4000/api/users/signintoken", {
+				.get(url + "api/users/signintoken", {
 					headers: { Authorization: "Bearer " + token },
 				})
 				.then((user) => {

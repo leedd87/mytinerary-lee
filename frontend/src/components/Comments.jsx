@@ -29,7 +29,7 @@ const Comments = ({ itinerary }) => {
 		//eslint-disable-next-line
 	}, [reload]);
 
-	// console.log(comments);
+	console.log(comments);
 
 	async function handleAddComment(event) {
 		event.preventDefault();
@@ -97,16 +97,21 @@ const Comments = ({ itinerary }) => {
 						>
 							<div className="d-flex align-items-center w-100 py-3 mb-3 rounded bg-name-avatar">
 								<img
-									src={comment?.userId.userPhoto}
+									src={
+										comment.userId.userPhoto
+											? comment.userId.userPhoto
+											: null
+									}
 									className="rounded-circle mx-5 border border-dark"
 									style={{ width: 65 }}
 									alt="Avatar"
 									referrerPolicy="no-referrer"
 								/>
 								<h5 className="me-3 my-0">
-									{comment?.userId.userName +
-										" " +
-										comment?.userId.userLastName}
+									{comment?.userId.userName &&
+									comment?.userId.userLastName
+										? `${comment?.userId.userName} ${comment?.userId.userLastName}`
+										: comment?.userId.userName}
 								</h5>
 							</div>
 							<div className="d-flex w-100 bg-comment p-2 rounded flex-column flex-sm-row">

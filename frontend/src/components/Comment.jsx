@@ -34,7 +34,8 @@ const Comment = ({ comment, user, handleReload }) => {
 		}
 		handleReload();
 	}
-
+	console.log(comment);
+	console.log(user);
 	return (
 		<>
 			<div className="d-flex align-items-center w-100 py-3 mb-3 rounded bg-name-avatar">
@@ -46,13 +47,13 @@ const Comment = ({ comment, user, handleReload }) => {
 					referrerPolicy="no-referrer" //evita el error de google
 				/>
 				<h5 className="me-3 my-0">
-					{comment?.userId.userName && comment?.userId.userLastName
+					{comment.userId.userName && comment?.userId.userLastName
 						? `${comment?.userId.userName} ${comment?.userId.userLastName}`
 						: comment?.userId.userName}
 				</h5>
 			</div>
 			<div className="d-flex w-100 bg-comment p-2 rounded flex-column flex-sm-row">
-				{comment?.userId._id === user.userData.id ? (
+				{comment.userId._id === user.userData.id ? (
 					<div
 						suppressContentEditableWarning={true}
 						contentEditable

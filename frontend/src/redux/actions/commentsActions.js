@@ -1,12 +1,14 @@
 import axios from "axios";
 
+const url = "http://localhost:4000/";
+
 const commentsActions = {
 	addCommentAction: (comment) => {
 		const token = localStorage.getItem("token");
 		return async () => {
 			try {
 				let res = await axios.post(
-					`http://localhost:4000/api/itineraries/comments/`,
+					url + `api/itineraries/comments/`,
 					{ comment },
 					{ headers: { Authorization: "Bearer " + token } }
 				);
@@ -23,7 +25,7 @@ const commentsActions = {
 		return async () => {
 			try {
 				let res = await axios.put(
-					`http://localhost:4000/api/itineraries/comments/${id}`,
+					url + `api/itineraries/comments/${id}`,
 					{ comment },
 					{ headers: { Authorization: "Bearer " + token } }
 				);
@@ -41,7 +43,7 @@ const commentsActions = {
 			try {
 				let res = await axios.post(
 					//ES UN POST
-					`http://localhost:4000/api/itineraries/comments/${idComment}`,
+					url + `api/itineraries/comments/${idComment}`,
 					{},
 					{ headers: { Authorization: "Bearer " + token } }
 				);

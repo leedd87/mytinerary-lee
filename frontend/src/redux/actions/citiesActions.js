@@ -1,10 +1,12 @@
 import axios from "axios";
 
+const url = "http://localhost:4000/";
+
 const citiesActions = {
 	//aca se crean todos las acciones
 	getCities: () => {
 		return async (dispatch, getState) => {
-			const res = await axios.get("http://localhost:4000/api/cities");
+			const res = await axios.get(url + "api/cities");
 			// console.log(res);
 			dispatch({ type: "GET_CITIES", payload: res.data.response.cities });
 			// console.log(res.data.response.cities);
@@ -13,7 +15,7 @@ const citiesActions = {
 
 	getOneCity: (id) => {
 		return async (dispatch, getState) => {
-			const res = await axios.get(`http://localhost:4000/api/cities/${id}`);
+			const res = await axios.get(url + `api/cities/${id}`);
 
 			dispatch({ type: "GET_ONE_CITY", payload: res.data.response });
 		};
