@@ -228,7 +228,9 @@ const usersControllers = {
 		if (user) {
 			user.verification = true;
 			await user.save();
-			res.redirect("http://localhost:3000/users/signin");
+			res.redirect(
+				"https://mytinerary-lee-backend.herokuapp.com/users/signin"
+			);
 		} else {
 			res.json({
 				success: false,
