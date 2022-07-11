@@ -103,7 +103,7 @@ const Comments = ({ itinerary }) => {
 											: null
 									}
 									className="rounded-circle mx-5 border border-dark"
-									style={{ width: 65 }}
+									style={{ width: 75, height: 75 }}
 									alt="Avatar"
 									referrerPolicy="no-referrer"
 								/>

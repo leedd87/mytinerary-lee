@@ -5,7 +5,7 @@ import "../styles/printItineraries.css";
 import CardItinerary from "./CardItinerary";
 import { useDispatch } from "react-redux";
 import itinerariesActions from "../redux/actions/itinerariesActions";
-
+import { Link as LinkRouter } from "react-router-dom";
 import ItineraryNotFound from "./ItineraryNotFound";
 
 const PrintItineraries = ({ image, name, id }) => {
@@ -57,6 +57,13 @@ const PrintItineraries = ({ image, name, id }) => {
 			) : (
 				<ItineraryNotFound />
 			)}
+			<div>
+				<LinkRouter to="/cities" className="mx-2 back-to-cities-link ">
+					<h3 className="back-to-cities btn-detail rounded p-2">
+						Back to cities
+					</h3>
+				</LinkRouter>
+			</div>
 		</>
 	);
 };

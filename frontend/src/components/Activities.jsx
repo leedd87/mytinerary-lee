@@ -12,7 +12,7 @@ const Activities = ({ activities, itinerary }) => {
 
 	return (
 		<>
-			<div className="d-flex flex-column flex-lg-row align-items-center container">
+			<div className="d-flex flex-column flex-lg-row  justify-content-center align-items-center container">
 				{allActivities?.length > 0 ? (
 					allActivities.map((activity, index) => (
 						// <div key={activity._id}>
@@ -30,7 +30,9 @@ const Activities = ({ activities, itinerary }) => {
 						// </div>
 					))
 				) : (
-					<h1 className="text-center">PAGE UNDER CONSTRUCTION</h1>
+					<h3 className="no-activities p-3 mb-5 mt-2 rounded">
+						No activities yet 🥲
+					</h3>
 				)}
 			</div>
 			{/* <PrintComments itinerary={itinerary} /> */}

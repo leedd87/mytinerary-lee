@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const Comment = ({ comment, user, handleReload }) => {
 	const dispatch = useDispatch();
-	const [modifyInput, setModifyInput] = useState();
+	const [modifyInput, setModifyInput] = useState("");
 
 	async function deleteComment(event) {
 		// console.log(event);
@@ -21,12 +21,22 @@ const Comment = ({ comment, user, handleReload }) => {
 	}
 
 	async function modifyComment(id) {
+		if (modifyInput === comment.comment) return;
+		if (modifyInput === "") {
+			toast.error("The field can't be empty");
+			setModifyInput(comment.comment);
+			handleReload();
+			return;
+		}
+
 		// console.log(id);
-		const comment = {
+		const newComment = {
 			comment: modifyInput,
 		};
 
-		let res = await dispatch(commentsActions.editCommentAction(comment, id));
+		let res = await dispatch(
+			commentsActions.editCommentAction(newComment, id)
+		);
 
 		let messagePopUp = res.data.message;
 		if (res.data.success) {
@@ -41,8 +51,8 @@ const Comment = ({ comment, user, handleReload }) => {
 			<div className="d-flex align-items-center w-100 py-3 mb-3 rounded bg-name-avatar">
 				<img
 					src={comment.userId.userPhoto ? comment.userId.userPhoto : null}
-					className="rounded-circle mx-5 border border-dark"
-					style={{ width: 65 }}
+					className="mx-5 rounded-circle border border-dark"
+					style={{ width: 75, height: 75 }}
 					alt="Avatar"
 					referrerPolicy="no-referrer" //evita el error de google
 				/>

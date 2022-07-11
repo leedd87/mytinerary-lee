@@ -5,6 +5,7 @@ import CardCities from "../components/CardCities";
 import citiesActions from "../redux/actions/citiesActions";
 import { useDispatch, useSelector } from "react-redux";
 import Error from "../components/NotFound";
+import { Link as LinkRouter } from "react-router-dom";
 
 function Cities() {
 	const dispatch = useDispatch();
@@ -53,6 +54,13 @@ function Cities() {
 						<Error />
 					)}
 				</div>
+			</div>
+			<div>
+				<LinkRouter to="/cities" className="mx-2 back-to-cities-link ">
+					<h3 className="back-to-cities btn-detail rounded p-2">
+						Back to Home
+					</h3>
+				</LinkRouter>
 			</div>
 		</div>
 	);

@@ -44,3 +44,42 @@
 
 
 }
+
+/* .back-to-cities {
+   background-color: #F5F5F5;
+
+   color: #F05454;
+   border: 2px solid #F05454;
+} */
+
+.back-to-cities-link {
+   text-decoration: none;
+}
+
+.btn-detail {
+   padding: 0.8em 1.8em;
+   border: 3px solid #F05454;
+   position: relative;
+   overflow: hidden;
+   background-color: #F5F5F5;
+   text-align: center;
+   text-transform: uppercase;
+   font-size: 1rem;
+   transition: .3s;
+   z-index: 1;
+   font-family: inherit;
+   color: #F05454;
+   /*grow effect*/
+   transition: all .2s ease-in-out;
+
+}
+
+.btn-detail:hover::before {
+   width: 105%;
+}
+
+.btn-detail:hover {
+   color: #30475E;
+   /*grow effect*/
+   transform: scale(1.1);
+}
