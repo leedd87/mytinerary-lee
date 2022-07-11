@@ -56,7 +56,7 @@ function Cities() {
 				</div>
 			</div>
 			<div>
-				<LinkRouter to="/cities" className="mx-2 back-to-cities-link ">
+				<LinkRouter to="/" className="mx-2 back-to-cities-link ">
 					<h3 className="back-to-cities btn-detail rounded p-2">
 						Back to Home
 					</h3>
