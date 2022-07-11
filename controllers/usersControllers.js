@@ -229,7 +229,7 @@ const usersControllers = {
 			user.verification = true;
 			await user.save();
 			res.redirect(
-				"https://mytinerary-lee-backend.herokuapp.com/users/signin"
+				"https://mytinerary-lee-frontend.herokuapp.com/users/signin"
 			);
 		} else {
 			res.json({
