@@ -28,10 +28,13 @@ const itinerariesControllers = {
 		let itinerary;
 		let error = null;
 		try {
-			itinerary = await Itinerary.findOne({ _id: id }).populate(
-				"comments.userId",
-				{ userLastName: 1, userName: 1, userPhoto: 1 }
-			);
+			itinerary = await Itinerary.findOne({ _id: id })
+				.populate("comments.userId", {
+					userLastName: 1,
+					userName: 1,
+					userPhoto: 1,
+				})
+				.populate("city");
 		} catch (err) {
 			error = err;
 		}
@@ -145,6 +148,7 @@ const itinerariesControllers = {
 			.then((itinirary) => {
 				console.log(itinirary);
 				if (itinirary.likes.includes(user)) {
+					//si los likes del itinerario incluyen al usuario
 					//este if saca el like
 					Itinerary.findOneAndUpdate(
 						{ _id: id },
