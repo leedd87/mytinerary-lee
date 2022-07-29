@@ -33,6 +33,7 @@
     "nodemon": "^2.0.16",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
-    "supertest": "^6.2.4"
+    "supertest": "^6.2.4",
+    "terser": "^5.14.2"
   }
 }
